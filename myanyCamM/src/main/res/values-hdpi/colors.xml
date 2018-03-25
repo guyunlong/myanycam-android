@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+    <color name="mediacontroller_bg">#99000000</color>
+        <color name="gray">#808080ff</color>
+        
+    <color name="sc_transparent_background">#00111111</color>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="select">#98aacc</color>
+    <color name="control_back">#88000000</color>
+    <color name="dialog_back">#330000FF</color>
+    <color name="app_white_background">#ffebebeb</color>
+    <color name="app_black_background">#ff221e1f</color>
+    <color name="transparent">#0000</color>
+    <color name="barcode_help_background">#7f000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_frame">#ffffff</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="widget_city">#595959</color>
+    <color name="divider_color">#d5d5d5</color>
+    <color name="dark_slate_gray">#2F4F4F</color>
+    <color name="gray_2">#AFAFAF</color>
+    <color name="gray_1">#C0C0C0</color>
+    <color name="cam_offline">#ff716e6e</color>
+    <color name="cam_online">#ff36b4f2</color>
+    <color name="vpager_bg">#ff212224</color>
+    <color name="vpager_hover">#ff54606e</color>
+    <color name="cut_line">#ffcccccc</color>
+    <color name="cut_line_black">#ff221e1f</color>
+    <color name="list_bg">#ff333132</color>
+    <color name="version_color">#ff808080</color>
+    <color name="more_info">#ff333333</color>
+
+</resources>

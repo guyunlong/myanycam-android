@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="action_bar_default_height">48dp</dimen>
+    <dimen name="mediacontroller_button_space">32dp</dimen>
+    <dimen name="mediacontroller_buttons_top_margin">2dp</dimen>
+    <dimen name="mediacontroller_buttons_bottom_margin">0dp</dimen>
+    
+    <dimen name="localnet_margin_top">10.0dip</dimen>
+    <dimen name="register_layout_height">50.0dip</dimen>
+    <dimen name="register_margin_left">10.0dip</dimen>
+    <dimen name="register_margin_right">10.0dip</dimen>
+    <dimen name="register_margin_top">20.0dip</dimen>
+    <dimen name="register_text_padding_left">10.0dip</dimen>
+    <dimen name="register_edit_margin_left">10.0dip</dimen>
+    <dimen name="register_edit_margin_right">15.0dip</dimen>
+    <dimen name="register_edit_padding_left">10.0dip</dimen>
+    <dimen name="upate_tip_dialog_view_textsize">16dp</dimen>
+    <dimen name="upate_tip_dialog_view_padding">6dp</dimen>
+    <dimen name="multi_dialog_height">30dp</dimen>
+    <dimen name="title_bg_heigh">45dp</dimen>
+    <dimen name="title_btn_heigh">45dp</dimen>
+    <dimen name="title_btn_width">80dp</dimen>
+    <dimen name="recomment_margin">2dp</dimen>
+    <dimen name="recomment_width">26dp</dimen>
+    <dimen name="price_textsize">11sp</dimen>
+    <dimen name="price_width">60dp</dimen>
+    <dimen name="price_height">20dp</dimen>
+    <dimen name="price_margin">10dp</dimen>
+    <!-- 字体 -->
+    <dimen name="tite_head_size">20sp</dimen>
+    <dimen name="set_item_size">18sp</dimen>
+    <dimen name="item_height">60dp</dimen>
+    <dimen name="item_margin">10dp</dimen>
+
+</resources>

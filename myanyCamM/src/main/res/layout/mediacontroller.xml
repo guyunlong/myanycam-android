@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mediacontroll"
+    android:layout_width="fill_parent"
+    android:layout_height="50dip"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/navi_bg"
+    android:visibility="invisible"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/play_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="#00000000"
+            android:src="@drawable/play_ctr_sound" />
+
+        <ImageButton
+            android:id="@+id/play_speak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="#00000000"
+            android:visibility="gone"
+            android:src="@drawable/play_ctr_speak" />
+
+        <ImageButton
+            android:id="@+id/play_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="#00000000"
+            android:src="@drawable/play_photo" />
+        
+        <ImageButton
+            android:id="@+id/play_rec_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="#00000000"
+            android:src="@drawable/play_rec_btn"
+     />
+    </LinearLayout>
+
+</RelativeLayout>

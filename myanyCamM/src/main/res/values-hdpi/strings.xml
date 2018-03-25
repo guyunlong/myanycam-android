@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="facebook_app_id">644832515532659</string>
+    <string name="content_desc_lock">锁定</string>
+    <string name="imageview_content_description"></string>
+    <string name="video_original">100%</string>
+    <string name="video_fit_screen">全屏</string>
+    <string name="video_stretch">拉伸</string>
+    <string name="video_crop">裁剪</string>
+    <string name="video_screen_locked">屏幕已锁定</string>
+    <string name="video_screen_unlocked">屏幕锁定已解除</string>
+    <string name="video_layout_buffering_progress">缓冲: %.2f%%</string>
+    <string name="video_cannot_play">对不起,这个视频不能播放。</string>
+    <string name="video_layout_loading">正在缓冲...</string>
+    <string name="closing_file">正在退出…</string>
+    <string name="file_explorer_sdcard_not_available">SD卡无法读取</string>
+    <string name="video_screenshot_save_in">截图存放在 %s.</string>
+    <string name="video_screenshot_failed">截图失败</string>
+        <string name="init_decoders">初始化播放器...</string>
+    <!-- 主界面 -->
+    <string name="logn_in">Login</string>
+    <string name="register">Register</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="auto_save_password">Remember</string>
+    <string name="logn_succeed">Login Success</string>
+    <string name="dialog_verify_cou">Login..</string>
+    <string name="login_failed">Login failed, user name or password error</string>
+    <string name="cam_online">Online</string>
+    <string name="cam_offline">Offline</string>
+    <string name="cam_view">view</string>
+    <string name="cam_updating">Updating</string>
+    <string name="qr_login">scan QR login</string>
+    <string name="manaul_login">manaul login</string>
+    <string name="psw_no_eight">password must be eight</string>
+    <string name="psw_modify">already modify password</string>
+
+    <!-- 注册界面 -->
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="password_null">Password field cannot be blank</string>
+    <string name="password_no_match">Password does not match the confirm password</string>
+    <string name="reg_email_invalid">Email format error</string>
+    <string name="confirm_pw_hint">Confirm Password</string>
+    <string name="psw_too_short">Password must be at least 8 characters</string>
+    <string name="dialog_reg">Register..</string>
+    <string name="reg_fail_username_exit">Register Failed， Username already exists</string>
+    <string name="reg_success">Congratulation!Register Success</string>
+
+    <!-- 摄像头列表界面 -->
+    <string name="camera">Camera</string>
+    <string name="camera_list">Camera List</string>
+    <string name="event">Event</string>
+    <string name="sys_setting">Settings</string>
+    <string name="cam_setting">Settings</string>
+    <string name="photos1">Photos</string>
+    <string name="sure_delete_cam">Are you sure you want to delete this camera?</string>
+    <string name="cam_max">Camera is already in use.</string>
+    <string name="cam_finish_call">Cam had hung up </string>
+    <string name="cam_psw_error">Please enter the password</string>
+    <string name="cam_psw_true">Congratulations, the password is correct.</string>
+    <string name="cam_psw_error1"> Password verification failed.</string>
+    <string name="quality">Quality</string>
+    <string name="select_quality_good">Good</string>
+    <string name="select_quality_better">Better</string>
+    <string name="select_quality_best">Best</string>
+    <!-- 报警界面 -->
+    <string name="event_title">Alarm&#038;Record</string>
+    <string name="no_more_event">No more data available</string>
+    <string name="load_more">load more..</string>
+    <string name="load">loading..</string>
+    <string name="delete_event_confirm">Are you sure you want to delete this event?</string>
+
+    <!-- 全局 -->
+    <string name="other_login">You have been loginned on elsewhere!</string>
+    <string name="change_password">Change password</string>
+    <string name="exit">Quit</string>
+    <string name="confirm">OK</string>
+    <string name="net_error">A problem with network！</string>
+    <string name="main_socket_timeout">Network connection error please re-login </string>
+    <string name="relogin">Relogin</string>
+    <string name="retry">Retry</string>
+    <string name="username_error">Username or Password is Wrong</string>
+    <string name="username_null">Username field cannot be blank</string>
+    <string name="no_net">No network is available</string>
+    <string name="note">Alert</string>
+    <string name="off_line">Camera is offline！</string>
+    <string name="title_back">Back</string>
+    <string name="title_add">Add</string>
+    <string name="btn_cancel">Cancel</string>
+
+    <!-- 添加摄像头界面 -->
+    <string name="add_camera">Add Camera</string>
+    <string name="cam_sn_hint">Sn</string>
+    <string name="cam_password_hint">Password</string>
+    <string name="cam_name_hint">Camera name</string>
+    <string name="cam_name">摄像头昵称</string>
+    <string name="cam_description">Description:</string>
+    <string name="cam_sn_wrong">Please enter the correct serial number!</string>
+    <string name="cam_psw_wrong">Enter password!</string>
+    <string name="cam_name_wrong">Enter Camera name</string>
+    <string name="add_cam_success">Add Success!</string>
+    <string name="add_cam_failed1">Add Failed! The camera you added has been used</string>
+    <string name="add_cam_failed2">Add Failed! The camera does not exist</string>
+    <string name="add_cam_failed3">This camera has been added</string>
+    <string name="qr_alert">将取景框对准二维码，既可自动扫描</string>
+    <string name="manaul_add">手动添加</string>
+    <string name="qr_code">二维码</string>
+
+    <!-- 系统设置界面 -->
+    <string name="log_out">Logout</string>
+    <string name="about">About</string>
+    <string name="more_info">更多信息</string>
+    <string name="version_name">版本</string>
+    <string name="version_info1"></string>
+    <string name="version_info2">Myanycam  技术支持</string>
+    <string name="version_info3">TM and © 2012&#8211;2015 myanycam.com</string>
+    <string name="version_info4">保留一切权利.许可协议</string>
+    <string name="more_info_activity">K•Cam 是“行走的力量”推出的一款周边产品。是巧合凝聚了这一刻。\n\n无论是“行走的力量”的起源，还是K•Cam的推出。\n\n我们相信，一切的发生都源于巧合，并不可再复制重来。\n\n而现在，K•Cam 让我们尽可能的记录下不可再复制的每一刻。\n\nK•Cam源自热爱行走的“東申童畫”团队。\n\n当我们在高山、峡谷、河流、沙漠、戈壁行走时，我们需要有一款便携的记录器，让我们记录眼前的一切，分享美好、分享正能量。\n\n于里于外，都凝聚了我们对传播美好、传递正面能量的决心。</string>
+
+    <!-- 通知相关 -->
+    <string name="notice_voice_alarm">Voice Alarm</string>
+    <string name="notice_move_alarm">Move Alarms</string>
+    <string name="notice_power_low">Low battery</string>
+
+    <!-- 更改密码界面 -->
+    <string name="orgin_psw">Current Password</string>
+    <string name="new_psw">New password</string>
+    <string name="orgin_wrong">Your current password is incorrect.</string>
+    <string name="new_psw_short">New password must be at least eight characters</string>
+    <string name="new_psw_no">New password does not match the confirm password</string>
+    <string name="chang_failed">Failed to change password</string>
+    <string name="chang_succeed">Password Changed Successfully</string>
+
+    <!-- 播放界面 -->
+    <string name="sdcard_invalid">SD card is not available</string>
+    <string name="click_play">Click to view</string>
+    <string name="local_title">Local</string>
+    <string name="time_0">0:00</string>
+    <string name="locked">Locked</string>
+    <string name="unlocked">Unlocked</string>
+    <string name="cam_no_sdcard">Camera SD card is not available</string>
+    <string name="cam_photo_success">Successful pictures</string>
+
+    <!-- 视频回放界面 -->
+    <string name="video_error">Can not play this video</string>
+    <string name="cannot_connect_server">Cannot connect to the proxy server</string>
+    <string name="video_time_out">Server is not responding due to a long</string>
+    <string name="no_coder">Your phone does not support the available video formats</string>
+    <string name="down_load_video_failed">Download video failed.</string>
+    <string name="downloaded_video">Downloaded</string>
+    <string name="tip_download_begin">Downloading</string>
+    <string name="down_load_video_success">Download Video Success</string>
+    <string name="tip_pre_video_downing">On a video is being downloaded, please try again later</string>
+    <string name="look_video">Video</string>
+
+    <!-- Ap Wifi连接 -->
+    <string name="connect">Connect</string>
+    <string name="show_password">Show password</string>
+
+    <!-- 摄像头信息修改界面 -->
+    <string name="cam_info">Camera Information</string>
+    <string name="modify_success">Successfully changed</string>
+    <string name="modify_failed">Change fails</string>
+    <string name="cam_password">Camera Password</string>
+    <string name="change_btn">Change</string>
+
+    <!-- 二维码相关 -->
+
+
+    <!-- 设置相关 -->
+    <string name="alarm_set">Alarm settings</string>
+    <string name="cam_rotate">Picture rotation 180°</string>
+    <string name="is_alarm">Alarm</string>
+    <string name="move_alarm">Motion Detection</string>
+    <string name="voice_alarm">Noise Detection</string>
+    <string name="alarm_record">Alarm Recording</string>
+    <string name="all_day_alarm">7*24 Hours</string>
+    <string name="fix_time_alarm">Timer Alarm</string>
+    <string name="rec_setting">Rcording settings</string>
+    <string name="is_rec_video">Rcording</string>
+    <string name="all_day_rec">7*24 Hours</string>
+    <string name="fix_time_rec">Timer recording</string>
+    <string name="auto_rec">Automatic video</string>
+    <string name="manual_record">Manual record</string>
+    <string name="time_zone">Time Zone:</string>
+    <string name="cam_sn">SN:</string>
+    <string name="cam_producter">Manufacturers:</string>
+    <string name="rom_version">ROM Version:</string>
+    <string name="confirm_cam_update">Are you sure you want to upgrade the camera?</string>
+    <string name="confirm_cam_updating">Upgrading...</string>
+    <string name="week_circle">Repeat</string>
+    <string name="circle_day">Mon、Tue、Wen、Thu、Fri</string>
+    <string name="week1">Mon</string>
+    <string name="week2">Tue</string>
+    <string name="week3">Wen</string>
+    <string name="week4">Thu</string>
+    <string name="week5">Fri</string>
+    <string name="week6">Sat</string>
+    <string name="week7">Sun</string>
+    <string name="watch_camera">Preview video</string>
+    <string name="wifi_list">Available wireless</string>
+    <string name="wifi_psw_note">Password</string>
+    <string name="quality_setting">Quality Setting</string>
+    <string name="live_quality">Live Quality Setting</string>
+    <string name="rec_quality">Record Quality Setting</string>
+    <string name="quality_good">Good</string>
+    <string name="quality_better">Better</string>
+    <string name="quality_Best">Best</string>
+    <string name="share_cam">Share my camera</string>
+    <string name="share_cam_note">Sharing time</string>
+    <string name="share_unit">hour</string>
+    <string name="share_fix">Share</string>
+    <string name="cam_restart">Restart camera</string>
+    <string name="sure_cam_restart">Sure you want to reset the camera you?</string>
+
+    <!-- 全局 -->
+
+    <string name="app_id">170901419728495</string>
+    <string name="app_name">Myanycam.M</string>
+    <string name="apsetting">Network Settings</string>
+    <string name="auto_ip">Automatically obtain an ip address</string>
+    <string name="defaultgateway">Default Gateway</string>
+    <string name="firstdns">preferred dns server</string>
+    <string name="ipaddress">IP Addresses</string>
+    <string name="netmask">Subnet Mask</string>
+    <string name="safety_pre">Security </string>
+    <string name="save_network_info">Saving settings ... </string>
+    <string name="save_success">Successfully saved</string>
+    <string name="save_failed">Failed save,No space left on sdcard</string>
+    <string name="seconddns">Alternate DNS server</string>
+    <string name="select_start_time">Set start time</string>
+    <string name="select_end_time">Set end time</string>
+    <string name="set_time_error">The end time must be greater than start time</string>
+    <string name="cam_config_request">Get the camera configuration ...</string>
+    <string name="sending_request">Sending request</string>
+    <string name="setting_category_titie_check_update">Check for new version</string>
+    <string name="setting_category_titie_local_net">Ethernet settings</string>
+    <string name="setting_category_titie_wifi_net">Wireless Settings</string>
+    <string name="time_selcet">Choose a time period</string>
+    <string name="users">users</string>
+    <string name="tab_photo">Photo</string>
+    <string name="tab_video">Video</string>
+
+    <!-- 升级需要使用到的文字 -->
+    <string name="tip_no_sdcard">Upgrade fails, check the availability of the SD card.</string>
+    <string name="tip_sdcard_unavailable">Upgrade fails, check the availability of the SD card.</string>
+    <string name="tip_sdcard_full">Not enough storage space.</string>
+    <string name="tip_url_illegal">Network address is unavailable.</string>
+    <string name="newwork_unavailable">Connection fails, check the network.</string>
+    <string name="tip_update_begin">Start downloading upgrades, please wait ...</string>
+    <string name="tip_updating">Downloading the upgrade package, please wait.</string>
+    <string name="notification_updating">Download upgrades</string>
+    <string name="notification_update_title">Download upgrades</string>
+    <string name="notification_update_error">Download upgrades fail.</string>
+    <string name="notification_update_success_title">Download complete upgrade package.</string>
+    <string name="notification_update_success">The download is complete, ready to install.</string>
+    <string name="notification_update_error_title">Download the upgrade package fails.</string>
+    <string name="notification_update_error2">SD card is not enough space.</string>
+    <string name="notification_update_error3">Please check whether the network is available.</string>
+    <string name="notification_update_error4">Overtime, and may be less stable Oh network.</string>
+    <string name="notification_update_error5">SD card may be insufficient space.</string>
+    <string name="notification_update_error6">May be a network is not good, please try again.</string>
+    <string name="update_title">Upgrade Tips.</string>
+    <string name="btn_update_ok">Upgrade</string>
+    <string name="btn_quit">Exit</string>
+    <string name="btn_retry">Retry</string>
+    <string name="default_update_content">Detects a new version, please upgrade.</string>
+    <string name="tip_update_package_success">Upgrade package has been downloaded.</string>
+    <string name="btn_checking">Check ...</string>
+    <string name="btn_check_update">Check for updates.</string>
+    <string name="tip_the_newest_version">Your version is the latest version.</string>
+    <string name="tip_get_data_failed">Failed to get data</string>
+    <string name="sdcard_overflow">SD card is not enough space.</string>
+    <string name="is_remind_update">Do not remind me.</string>
+
+    <!-- 升级需要使用到的文字 -->
+
+    <string name="pull_to_refresh_pull_label">Pull to refresh...</string>
+    <string name="pull_to_refresh_release_label">Release to refresh...</string>
+    <string name="pull_to_refresh_refreshing_label">Loading...</string>
+    <string name="pull_to_refresh_tap_label">Tap to refresh...</string>
+
+    <!-- 看照片界面 -->
+    <string name="share_object">K.Cam Share</string>
+    <string name="share_content">Share from K.Cam</string>
+    <string name="delete_photo">Are you sure you want to delete this photo?</string>
+    <!-- 一键通话界面 -->
+    <string name="accept">Answer</string>
+    <string name="refuse">Refuse</string>
+    <string name="top_alert_text">Is requesting a call</string>
+    <string name="viewpager_indicator">%1$d/%2$d</string>
+    <!-- 下来刷新 -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">释放刷新</string>
+    <string name="xlistview_header_hint_loading">正在加载…</string>
+    <string name="xlistview_header_last_time">最后更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
+</resources>

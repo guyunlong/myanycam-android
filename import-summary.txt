@@ -1,0 +1,106 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From InitActivity:
+* README.md
+* build.gradle
+* proguard-project.txt
+From MyanyCamM:
+* .externalToolBuilders/
+* .externalToolBuilders/Myanycam_C_Builder.launch
+* .gitignore
+* proguard/
+* proguard/dump.txt
+* proguard/mapping.txt
+* proguard/seeds.txt
+* proguard/usage.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In InitActivity:
+* AndroidManifest.xml => initActivity/src/main/AndroidManifest.xml
+* assets/ => initActivity/src/main/assets
+* libs/armeabi-v7a/libvinit.so => initActivity/src/main/jniLibs/armeabi-v7a/libvinit.so
+* libs/armeabi/libvinit.so => initActivity/src/main/jniLibs/armeabi/libvinit.so
+* libs/mips/libvinit.so => initActivity/src/main/jniLibs/mips/libvinit.so
+* libs/x86/libvinit.so => initActivity/src/main/jniLibs/x86/libvinit.so
+* res/ => initActivity/src/main/res/
+* src/ => initActivity/src/main/java/
+In MyanyCamM:
+* AndroidManifest.xml => myanyCamM/src/main/AndroidManifest.xml
+* assets/ => myanyCamM/src/main/assets/
+* jni/ => myanyCamM/src/main/jni/
+* libs/afinal_0.5_bin.jar => myanyCamM/libs/afinal_0.5_bin.jar
+* libs/armeabi-v7a/libNativeAudio.so => myanyCamM/src/main/jniLibs/armeabi-v7a/libNativeAudio.so
+* libs/armeabi-v7a/libPlumble.so => myanyCamM/src/main/jniLibs/armeabi-v7a/libPlumble.so
+* libs/armeabi-v7a/libaacdecoder.so => myanyCamM/src/main/jniLibs/armeabi-v7a/libaacdecoder.so
+* libs/armeabi-v7a/libffmpegutils.so => myanyCamM/src/main/jniLibs/armeabi-v7a/libffmpegutils.so
+* libs/armeabi-v7a/libiomx-gingerbread.so => myanyCamM/src/main/jniLibs/armeabi-v7a/libiomx-gingerbread.so
+* libs/armeabi-v7a/libiomx-hc.so => myanyCamM/src/main/jniLibs/armeabi-v7a/libiomx-hc.so
+* libs/armeabi-v7a/libiomx-ics.so => myanyCamM/src/main/jniLibs/armeabi-v7a/libiomx-ics.so
+* libs/armeabi-v7a/libvlcjni.so => myanyCamM/src/main/jniLibs/armeabi-v7a/libvlcjni.so
+* libs/armeabi-v7a/libwebrtc_aecm.so => myanyCamM/src/main/jniLibs/armeabi-v7a/libwebrtc_aecm.so
+* libs/armeabi/libNativeAudio.so => myanyCamM/src/main/jniLibs/armeabi/libNativeAudio.so
+* libs/armeabi/libPlumble.so => myanyCamM/src/main/jniLibs/armeabi/libPlumble.so
+* libs/armeabi/libaacdecoder.so => myanyCamM/src/main/jniLibs/armeabi/libaacdecoder.so
+* libs/armeabi/libffmpegutils.so => myanyCamM/src/main/jniLibs/armeabi/libffmpegutils.so
+* libs/armeabi/libiomx-gingerbread.so => myanyCamM/src/main/jniLibs/armeabi/libiomx-gingerbread.so
+* libs/armeabi/libiomx-hc.so => myanyCamM/src/main/jniLibs/armeabi/libiomx-hc.so
+* libs/armeabi/libiomx-ics.so => myanyCamM/src/main/jniLibs/armeabi/libiomx-ics.so
+* libs/armeabi/libvlcjni.so => myanyCamM/src/main/jniLibs/armeabi/libvlcjni.so
+* libs/armeabi/libwebrtc_aecm.so => myanyCamM/src/main/jniLibs/armeabi/libwebrtc_aecm.so
+* libs/core.jar => myanyCamM/libs/core.jar
+* libs/twitter4j-core-3.0.3.jar => myanyCamM/libs/twitter4j-core-3.0.3.jar
+* libs/twitter4j-stream-3.0.3.jar => myanyCamM/libs/twitter4j-stream-3.0.3.jar
+* libs/umeng_sdk.jar => myanyCamM/libs/umeng_sdk.jar
+* lint.xml => myanyCamM/lint.xml
+* res/ => myanyCamM/src/main/res/
+* src/ => myanyCamM/src/main/java/
+* src/gyl/cam/.DS_Store => myanyCamM/src/main/resources/gyl/cam/.DS_Store
+* src/org/videolan/vlc/interfaces/IAudioService.aidl => myanyCamM/src/main/aidl/org/videolan/vlc/interfaces/IAudioService.aidl
+* src/org/videolan/vlc/interfaces/IAudioServiceCallback.aidl => myanyCamM/src/main/aidl/org/videolan/vlc/interfaces/IAudioServiceCallback.aidl
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

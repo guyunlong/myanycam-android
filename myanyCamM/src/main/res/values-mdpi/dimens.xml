@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="localnet_margin_top">30.0dip</dimen>
+    <dimen name="register_layout_height">50.0dip</dimen>
+
+</resources>

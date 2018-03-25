@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout_set"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+     android:background="@color/app_white_background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_bg_heigh"
+        android:background="@drawable/title_bg_blue"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/settings_head_title_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#fff"
+            android:textSize="20.0sp" />
+
+        <Button
+            android:id="@+id/settings_back_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_button_back"
+            android:textColor="@color/white"
+            android:textSize="16.0sp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/settings_btn_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/title_btn_heigh"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/title_button"
+            android:text="@string/title_add"
+            android:textColor="@color/white"
+            android:textSize="16.0sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="12.0dip"
+            android:paddingRight="12.0dip" >
+
+            <LinearLayout
+                android:id="@+id/caminfo_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@drawable/privacy_setting_item_top_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/cam_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:text="@string/cam_info"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/item_margin"
+                    android:src="@drawable/set_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/app_black_background" />
+
+            <LinearLayout
+                android:id="@+id/rec_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@drawable/privacy_setting_item_mid_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/rec_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:text="@string/rec_setting"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/item_margin"
+                    android:src="@drawable/set_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/app_black_background"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/alarm_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@color/list_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/alarm_set"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:text="@string/alarm_set"
+                    android:textColor="#ffffffff"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/item_margin"
+                    android:src="@drawable/set_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/app_black_background" />
+
+            <LinearLayout
+                android:id="@+id/cam_rotate_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@drawable/privacy_setting_item_mid_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/cam_rotate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:text="@string/cam_rotate"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/is_rotate"
+                    android:layout_width="65dp"
+                    android:layout_height="37dp"
+                    android:layout_marginRight="@dimen/item_margin"
+                    android:src="@drawable/on" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/app_black_background" />
+
+            <LinearLayout
+                android:id="@+id/cam_sn_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@drawable/privacy_setting_item_mid_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/cam_sn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:text="@string/cam_sn"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/app_black_background" />
+
+            <LinearLayout
+                android:id="@+id/cam_psw_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@drawable/privacy_setting_item_mid_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:src="@drawable/log_in_key_icon" />
+
+                <EditText
+                    android:id="@+id/cam_password_edit"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
+                    android:background="#00ffffff"
+                    android:hint="@string/cam_password_hint"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="#ff999999"
+                    android:textColorHint="#ff999999"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:id="@+id/psw_set_layout"
+                    android:layout_width="100dp"
+                    android:layout_height="40.0dip"
+                    android:layout_marginRight="@dimen/item_margin"
+                    android:background="@color/white"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/confirm"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/app_black_background" />
+
+            <LinearLayout
+                android:id="@+id/cam_rom_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+               android:background="@drawable/privacy_setting_item_mid_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/rom_version"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:text="@string/rom_version"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/app_black_background" />
+
+            <LinearLayout
+                android:id="@+id/wifi_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@drawable/privacy_setting_item_mid_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/wifi_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:text="@string/setting_category_titie_wifi_net"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/item_margin"
+                    android:src="@drawable/set_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/app_black_background" />
+
+            <LinearLayout
+                android:id="@+id/restart_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@drawable/privacy_setting_item_bottom_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/cam_restart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:text="@string/cam_restart"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/item_margin"
+                    android:src="@drawable/set_arrow" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

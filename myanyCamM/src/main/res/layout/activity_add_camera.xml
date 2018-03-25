@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/app_white_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/settings_head" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/register_layout_height"
+        android:layout_marginLeft="@dimen/register_margin_left"
+        android:layout_marginRight="@dimen/register_margin_right"
+        android:layout_marginTop="@dimen/register_margin_top"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/cam_sn"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/register_edit_margin_left"
+            android:layout_marginRight="@dimen/register_edit_margin_right"
+            android:layout_weight="3"
+            android:background="@color/white"
+            android:hint="@string/cam_sn_hint"
+            android:inputType=""
+            android:maxLength="20"
+            android:paddingLeft="@dimen/register_edit_padding_left"
+            android:textColor="#ffa8a8a8"
+            android:textColorHint="#ffa8a8a8"
+            android:textSize="18.0sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/register_layout_height"
+        android:layout_marginLeft="@dimen/register_margin_left"
+        android:layout_marginRight="@dimen/register_margin_right"
+        android:layout_marginTop="@dimen/register_margin_top"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/cam_password"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/register_edit_margin_left"
+            android:layout_marginRight="@dimen/register_edit_margin_right"
+            android:layout_weight="3"
+            android:background="@color/white"
+            android:hint="@string/cam_password_hint"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:paddingLeft="10.0dip"
+            android:textColor="#ffa8a8a8"
+            android:textColorHint="#ffa8a8a8"
+            android:textSize="18.0sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/register_layout_height"
+        android:layout_marginLeft="@dimen/register_margin_left"
+        android:layout_marginRight="@dimen/register_margin_right"
+        android:layout_marginTop="@dimen/register_margin_top"
+         android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/cam_name"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/register_edit_margin_left"
+            android:layout_marginRight="@dimen/register_edit_margin_right"
+            android:layout_weight="3"
+            android:background="@color/white"
+            android:hint="@string/cam_name_hint"
+            android:inputType="text"
+            android:maxLength="20"
+            android:paddingLeft="10.0dip"
+            android:textColor="#ff545454"
+            android:textColorHint="#ffa8a8a8"
+            android:textSize="18.0sp" />
+    </LinearLayout>
+
+   
+        <Button
+        android:id="@+id/add_cam_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/register_margin_left"
+        android:layout_marginRight="@dimen/register_margin_right"
+        android:layout_marginTop="15.0dip"
+        android:background="@drawable/op_bg_selector"
+        android:text="@string/title_add"
+        android:textColor="#ff000000"
+        android:textSize="18.0sp" />
+</LinearLayout>

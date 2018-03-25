@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/app_black_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/settings_head" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/register_margin_left"
+        android:layout_marginRight="@dimen/register_margin_right"
+        android:layout_marginTop="@dimen/register_margin_top"
+        android:background="@color/app_black_background"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/register_layout_height"
+            android:gravity="center_vertical"
+            android:background="@color/list_bg"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/cam_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/register_edit_margin_left"
+                android:layout_marginRight="@dimen/register_edit_margin_right"
+                android:layout_weight="3"
+                android:background="@color/list_bg"
+                android:hint="@string/cam_name"
+                android:maxLength="20"
+                android:paddingLeft="@dimen/register_edit_padding_left"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/cam_descri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/register_margin_left"
+        android:layout_marginRight="@dimen/register_margin_right"
+        android:layout_marginTop="10dp"
+       android:background="@color/list_bg"
+        android:hint="@string/cam_description"
+        android:minLines="5"
+        android:paddingLeft="@dimen/register_edit_padding_left"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16.0sp" />
+
+    <Button
+        android:id="@+id/add_cam_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginTop="15.0dip"
+        android:background="@drawable/op_bg_selector"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/change_btn"
+        android:textColor="@color/white"
+        android:textSize="18.0sp" />
+
+</LinearLayout>

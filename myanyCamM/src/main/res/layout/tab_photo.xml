@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout_photo"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_white_background"
+    android:orientation="vertical" >
+
+   <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/title_bg_heigh"
+           android:background="@drawable/title_bg_blue"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/settings_head_title_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="#fff"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/settings_back_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_button_back"
+                android:textColor="@color/white"
+                android:textSize="16.0sp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/settings_btn_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/title_btn_heigh"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/title_button"
+                android:text="@string/title_add"
+                android:textColor="@color/white"
+                android:textSize="16.0sp"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+<include layout="@layout/horizontalview" />
+
+</LinearLayout>

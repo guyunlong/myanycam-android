@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffeaeaea"
+    android:orientation="vertical" >
+
+    <include layout="@layout/settings_head" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/live_quality"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:id="@+id/live_quality"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/live_better"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/live_good"
+                android:layout_weight="1"
+                android:text="@string/quality_good"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/live_better"
+                android:layout_weight="1"
+                android:text="@string/quality_better"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/live_best"
+                android:layout_weight="1"
+                android:text="@string/quality_Best"
+                android:textColor="@color/black" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="@string/rec_quality"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:id="@+id/rec_quality"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/rec_better"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/rec_good"
+                android:layout_weight="1"
+                android:text="@string/quality_good"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/rec_better"
+                android:layout_weight="1"
+                android:text="@string/quality_better"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/rec_best"
+                android:layout_weight="1"
+                android:text="@string/quality_Best"
+                android:textColor="@color/black" />
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>

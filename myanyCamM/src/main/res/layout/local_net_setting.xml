@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myanycam="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffeaeaea"
+    android:orientation="vertical" >
+
+    <include layout="@layout/settings_head" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="@string/auto_ip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+        <com.myanycamm.ui.SlipButton
+            android:id="@+id/auto_net_slipbtn"
+            android:layout_width="78dip"
+            android:layout_height="28dip"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="8dp" >
+        </com.myanycamm.ui.SlipButton>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/net_setting"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/mainLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:paddingLeft="12.0dip"
+            android:paddingRight="12.0dip" >
+
+            <com.myanycamm.ui.FixEditText
+                android:id="@+id/ipaddress_edittext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/localnet_margin_top"
+                android:gravity="right"
+                android:hint="@string/ipaddress"
+                android:maxLength="15"
+                myanycam:textNote="@string/ipaddress" />
+
+            <com.myanycamm.ui.FixEditText
+                android:id="@+id/netmask_edittext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/localnet_margin_top"
+                android:gravity="right"
+                android:hint="@string/netmask"
+                android:maxLength="15"
+                myanycam:textNote="@string/netmask" />
+
+            <com.myanycamm.ui.FixEditText
+                android:id="@+id/netgate_edittext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/localnet_margin_top"
+                android:gravity="right"
+                android:hint="@string/defaultgateway"
+                android:maxLength="15"
+                myanycam:textNote="@string/defaultgateway" />
+
+            <com.myanycamm.ui.FixEditText
+                android:id="@+id/firstdns_edittext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/localnet_margin_top"
+                android:gravity="right"
+                android:hint="@string/firstdns"
+                android:maxLength="15"
+                myanycam:textNote="@string/firstdns" />
+
+            <com.myanycamm.ui.FixEditText
+                android:id="@+id/seconddns_edittext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/localnet_margin_top"
+                android:gravity="right"
+                android:hint="@string/seconddns"
+                android:maxLength="15"
+                myanycam:textNote="@string/seconddns" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

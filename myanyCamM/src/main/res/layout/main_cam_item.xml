@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/weatherbook"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/body_cont_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/good_cell_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+     
+        android:layout_marginTop="8dp"
+        android:background="@color/app_white_background"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/good_cell_photo_one"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="12dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/default_image" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/good_cell_photo"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
+
+        <TextView
+            android:id="@+id/highlowtemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/cam_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:text="@string/cam_view"
+            android:textColor="@color/cam_online"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/cam_eye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/cam_view"
+            android:src="@drawable/cam_eye" />
+
+        <TextView
+            android:id="@+id/online_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/cam_eye"
+            android:singleLine="true"
+            android:text="@string/cam_offline"
+              android:textColor="@color/cam_offline"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/cam_line_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/online_text"
+            android:src="@drawable/cam_online_type" />
+
+        <ImageView
+            android:id="@+id/cam_ing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/cam_ing_img"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/alar_num"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right|top"
+        android:layout_margin="1.5dp"
+        android:background="@drawable/event_num_bg"
+        android:gravity="center"
+        android:text="2"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</RelativeLayout>
