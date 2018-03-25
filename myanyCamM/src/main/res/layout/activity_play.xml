@@ -5,7 +5,7 @@
     android:background="@color/app_black_background"
     android:orientation="vertical" >
 
-    <com.thSDK.GlBufferView
+    <com.thSDK.VideoSurfaceView
         android:id="@+id/paly_surf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,6 +1,8 @@
 package com.thSDK;
 
 
+import android.view.Surface;
+
 import io.vov.vitamio.utils.Log;
 
 public class lib
@@ -25,6 +27,7 @@ public class lib
 
     public static native int jopengl_Resize(int w, int h);
     public static native int jopengl_Render();
+    public static native int jopenglInit(Surface surface);
     public static native int jvideo_decode_init(int type,int width,int height);
     public static native int jvideo_decode_frame(byte[]buf,int size);
 

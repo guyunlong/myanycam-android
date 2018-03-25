@@ -55,7 +55,7 @@ import com.myanycamm.ui.DialogFactory;
 import com.myanycamm.ui.PhotoListView;
 import com.myanycamm.utils.ELog;
 import com.myanycamm.utils.FileUtils;
-import com.thSDK.GlBufferView;
+import com.thSDK.VideoSurfaceView;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -100,7 +100,7 @@ public class CallAcceptActivity extends Activity {
 	private Button playBack;
 	private TextView rateTextView;
 	private ImageButton speak, photo, sound;
-	GlBufferView glView;
+	VideoSurfaceView glView;
 
 
 	// 音频获取源
@@ -506,7 +506,7 @@ public class CallAcceptActivity extends Activity {
 		mediaControllerLayout = (RelativeLayout) findViewById(R.id.mediacontroll);
 		mediaControllerLayout.getBackground().setAlpha(80);
 		headLayout = (LinearLayout) findViewById(R.id.head_layout);
-		glView = (GlBufferView) findViewById(R.id.paly_surf);
+		glView = (VideoSurfaceView) findViewById(R.id.paly_surf);
 
 		// mGlBufferView = (GlBufferView)
 		// camView.findViewById(R.id.glbuffer_view);

@@ -19,18 +19,22 @@
 #include <android/log.h>
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
+
+
+
+
+extern "C"{
 #include "jni.h"
-
-#include <SLES/OpenSLES.h>
-#include "SLES/OpenSLES_Android.h"
-
 #include "GLES/gl.h"
 #include "GLES/glext.h"
-
+#include <SLES/OpenSLES.h>
+#include "SLES/OpenSLES_Android.h"
 #include "ffmpeg/libavcodec/avcodec.h"
 #include "ffmpeg/libavformat/avformat.h"
 #include "ffmpeg/libswscale/swscale.h"
 #include "ffmpeg/libavutil/log.h"
+}
+
 
 #define CLASS_PATH_NAME "com/thSDK/lib"
 #define LOG_TAG    "jni"
@@ -39,7 +43,7 @@
 
 typedef  uint8_t u8  ;
 typedef char char1024[1024];
-typedef int bool;
+
 
 typedef struct videoCfg{
 #ifdef IS_RENDER_YUV420
@@ -107,7 +111,7 @@ int video_decode_Free();
 //render
 int jopengl_Resize(JNIEnv* env, jclass obj, int w, int h);
 int jopengl_Render(JNIEnv* env, jclass obj);
-
+int jopenglInit(JNIEnv* env, jclass obj, jobject h);
 
 
 

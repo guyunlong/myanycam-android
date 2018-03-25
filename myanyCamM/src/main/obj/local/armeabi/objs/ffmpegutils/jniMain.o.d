@@ -1,5 +1,5 @@
 /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/obj/local/armeabi/objs/ffmpegutils/jniMain.o: \
- /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jniMain.c \
+ /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jniMain.cpp \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jniMain.h \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jni.h \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/GLES/gl.h \
@@ -32,7 +32,9 @@
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/common.h \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavformat/version.h \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libswscale/swscale.h \
- /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/log.h
+ /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/log.h \
+ /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/shaderUtils.h \
+ /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/GLES/gl.h
 
 /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jniMain.h:
 
@@ -99,3 +101,7 @@
 /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libswscale/swscale.h:
 
 /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/log.h:
+
+/Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/shaderUtils.h:
+
+/Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/GLES/gl.h:
