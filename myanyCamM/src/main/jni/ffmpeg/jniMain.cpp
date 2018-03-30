@@ -1,12 +1,9 @@
 #include "jniMain.h"
-#include "GLES/gl.h"
-#include "GLES/glext.h"
+//#include "GLES/gl.h"
+//#include "GLES/glext.h"
 #include "shaderUtils.h"
-#include <GLES2/gl2.h>
 #include <EGL/egl.h>
-#include <GLES/gl.h>
 #include <android/native_window_jni.h>
-#include<android/native_window.h>
 MyVideo _video;
 pthread_cond_t th_sync_cond;
 pthread_mutex_t th_mutex_lock;
@@ -23,10 +20,10 @@ GLuint yTextureId;
 GLuint uTextureId;
 GLuint vTextureId;
 
-EGLConfig eglConf;
-EGLSurface eglWindow;
-EGLContext eglCtx;
-EGLDisplay eglDisp;
+static EGLConfig eglConf;
+static EGLSurface eglWindow;
+static EGLContext eglCtx;
+static EGLDisplay eglDisp;
 
 
 
@@ -161,16 +158,18 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
 #ifdef IS_TEST
   struct timeval tv1, tv2; gettimeofday(&tv1, NULL);
 #endif
+    AVFrame *yuvFrame = avcodec_alloc_frame();
+    
   while (packet.size > 0)
   {
      
-    size = avcodec_decode_video2(_video.ContextV, _video.Frame422, &gotPicture, &packet);
+    size = avcodec_decode_video2(_video.ContextV,yuvFrame, &gotPicture, &packet);
   
       if (gotPicture == 0)
     {
        LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
        
-      size = avcodec_decode_video2(_video.ContextV, _video.Frame422, &gotPicture, &packet);
+      size = avcodec_decode_video2(_video.ContextV, yuvFrame, &gotPicture, &packet);
       break;
     }
     packet.size -= size;
@@ -182,44 +181,33 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
  LOGE("gotPicture is %d,%s(%d) \n",gotPicture, __FUNCTION__, __LINE__);
     
     
-    char *bufY = (char *)malloc((size_t) (_video.Frame422->width * _video.Frame422->height));
-    char *bufU = (char *)malloc((size_t) (_video.Frame422->width * _video.Frame422->height/4));
-    char *bufV = (char *)malloc((size_t) (_video.Frame422->width * _video.Frame422->height/4));
-    LOGE("y %d,u is %d,v is %d,%s(%d) \n",_video.Frame422->width * _video.Frame422->height, _video.Frame422->width * _video.Frame422->height/4,_video.Frame422->width * _video.Frame422->height/4,__FUNCTION__, __LINE__);
-    for (int i=0; i<_video.Frame422->height; i++)
-        memcpy(bufY + _video.Frame422->width * i, _video.Frame422->data[0] + _video.Frame422->linesize[0] * i, (size_t) _video.Frame422->width);
-    for (int i=0; i<_video.Frame422->height/2; i++)
-        memcpy(bufU + _video.Frame422->width / 2 * i, _video.Frame422->data[1] + _video.Frame422->linesize[1] * i, (size_t) (_video.Frame422->width / 2));
-    for (int i=0; i<_video.Frame422->height/2; i++)
-        memcpy(bufV + _video.Frame422->width / 2 * i, _video.Frame422->data[2] + _video.Frame422->linesize[2] * i, (size_t) (_video.Frame422->width / 2));
-    
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, yTextureId);
-    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, _video.Frame422->width, _video.Frame422->height, GL_LUMINANCE, GL_UNSIGNED_BYTE, bufY);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, yuvFrame->linesize[0], yuvFrame->height,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, yuvFrame->data[0]);
     
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, uTextureId);
-    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, _video.Frame422->width/2, _video.Frame422->height/2, GL_LUMINANCE, GL_UNSIGNED_BYTE, bufU);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE,  yuvFrame->linesize[1], yuvFrame->height/2,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, yuvFrame->data[1]);
     
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, vTextureId);
-    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, _video.Frame422->width/2, _video.Frame422->height/2, GL_LUMINANCE, GL_UNSIGNED_BYTE, bufV);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE,  yuvFrame->linesize[2], yuvFrame->height/2,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, yuvFrame->data[2]);
     
-   
     
     /***
      * 纹理更新完成后开始绘制
      ***/
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-      glDrawTexiOES(0, 0, 0, 640,360);
-    //glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     
     eglSwapBuffers(eglDisp, eglWindow);
     
-    free(bufY);
-    free(bufU);
-    free(bufV);
+  //  av_free(&yuvFrame);
     
+   
+    
+   
     
     //av_frame_free(&yuvFrame);
     
@@ -290,7 +278,7 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface){
     /**
      *初始化egl
      **/
-   
+    LOGE("jopenglInit begin");
     int windowWidth;
     int windowHeight;
     ANativeWindow *nativeWindow = ANativeWindow_fromSurface(env, surface);
@@ -349,8 +337,8 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface){
     
     
     //因为没有用矩阵所以就手动自适应
-    int videoWidth = 640;
-    int videoHeight = 360;
+    int videoWidth = 1280;
+    int videoHeight = 720;
     
     int left,top,viewWidth,viewHeight;
     if(windowHeight > windowWidth){
@@ -382,8 +370,7 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface){
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,
                     GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, videoWidth, videoHeight, 0,
-                 GL_LUMINANCE, GL_UNSIGNED_BYTE, NULL);
+    
     glUniform1i(textureSamplerHandleY,0);
     
     glGenTextures(1,&uTextureId);
@@ -392,8 +379,7 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface){
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,
                     GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, videoWidth/2, videoHeight/2, 0,
-                 GL_LUMINANCE, GL_UNSIGNED_BYTE, NULL);
+    
     glUniform1i(textureSamplerHandleU,1);
     
     glGenTextures(1,&vTextureId);
@@ -402,10 +388,9 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface){
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,
                     GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, videoWidth/2, videoHeight/2, 0,
-                 GL_LUMINANCE, GL_UNSIGNED_BYTE, NULL);
-    glUniform1i(textureSamplerHandleV,2);
     
+    glUniform1i(textureSamplerHandleV,2);
+
     return 1;
 }
 int jopengl_Resize(JNIEnv* env, jclass obj, int w, int h)

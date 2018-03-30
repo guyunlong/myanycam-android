@@ -6,9 +6,8 @@
 //  Copyright © 2018 jdf. All rights reserved.
 //
 
+#include <malloc.h>
 #include "shaderUtils.h"
-#include "GLES/gl.h"
-#include <GLES2/gl2.h>
 GLuint ShaderUtils::createProgram(const char *vertexSource, const char *fragmentSource) {
     GLuint vertexShader = loadShader(GL_VERTEX_SHADER, vertexSource);
     if (!vertexShader) {

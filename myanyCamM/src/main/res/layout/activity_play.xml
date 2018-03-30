@@ -5,16 +5,9 @@
     android:background="@color/app_black_background"
     android:orientation="vertical" >
 
-    <com.thSDK.VideoSurfaceView
-        android:id="@+id/paly_surf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        />
-
     <LinearLayout
         android:id="@+id/head_layout"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@color/black" >
@@ -24,7 +17,7 @@
             android:layout_height="@dimen/title_bg_heigh"
             android:background="@drawable/title_bg_blue"
             android:orientation="horizontal"
-             >
+            >
 
             <TextView
                 android:id="@+id/settings_head_title_play"
@@ -80,8 +73,8 @@
         android:textColor="#ffffffff"
         android:visibility="gone"
         android:textSize="14sp" />
-    
-     <ImageView
+
+    <ImageView
         android:id="@+id/baterry_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -115,13 +108,7 @@
             android:layout_centerInParent="true"
             android:src="@drawable/big_playcircle" />
 
-        <ImageView
-            android:id="@+id/play_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:clickable="true"
-            android:src="@drawable/big_playmiddle" />
+
 
         <TextView
             android:id="@+id/play_text"
@@ -133,5 +120,21 @@
             android:text="@string/click_play"
             android:textSize="16dp" />
     </RelativeLayout>
+
+
+    <com.thSDK.VideoSurfaceView
+        android:id="@+id/paly_surf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+    <ImageView
+        android:id="@+id/play_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:src="@drawable/big_playmiddle" />
 
 </RelativeLayout>

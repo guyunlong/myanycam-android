@@ -62,7 +62,6 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import gyl.cam.SoundPlay;
-import gyl.cam.recThread;
 
 public class CallAcceptActivity extends Activity {
 	private final String TAG = "CallAcceptActivity";
@@ -381,6 +380,7 @@ public class CallAcceptActivity extends Activity {
 		win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
 				| WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 		setContentView(R.layout.activity_call_accept);
+		ELog.i(TAG, "=====================0");
 		initView();
 		playRingStone();
 		Intent intent = getIntent();
@@ -506,8 +506,8 @@ public class CallAcceptActivity extends Activity {
 		mediaControllerLayout = (RelativeLayout) findViewById(R.id.mediacontroll);
 		mediaControllerLayout.getBackground().setAlpha(80);
 		headLayout = (LinearLayout) findViewById(R.id.head_layout);
-		glView = (VideoSurfaceView) findViewById(R.id.paly_surf);
-
+		//glView = (VideoSurfaceView) findViewById(R.id.paly_surf);
+		//lib.jopenglInit(glView.getHolder().getSurface());
 		// mGlBufferView = (GlBufferView)
 		// camView.findViewById(R.id.glbuffer_view);
 
@@ -707,9 +707,9 @@ public class CallAcceptActivity extends Activity {
 
 		//
 		VideoData.Videolist.clear();// 清空数据
-		recThread dataRecThread = new recThread(callHandler);
+		//recThread dataRecThread = new recThread(callHandler);
 		//
-		dataRecThread.start();
+		//dataRecThread.start();
 		SocketFunction.getInstance().mUdpSocket
 				.setmVideoListener(mVideoListener);
 		sound.setOnClickListener(soundOnClickListener);

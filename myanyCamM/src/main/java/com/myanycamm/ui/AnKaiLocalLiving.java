@@ -1,10 +1,5 @@
 package com.myanycamm.ui;
 
-import gyl.cam.SoundPlay;
-import gyl.cam.recThread;
-
-import java.io.IOException;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
@@ -47,11 +42,17 @@ import com.myanycamm.model.VideoListener;
 import com.myanycamm.utils.ELog;
 import com.myanycamm.utils.FileUtils;
 import com.myanycamm.utils.Utils;
+import com.thSDK.VideoSurfaceView;
+
+import java.io.IOException;
+
+import gyl.cam.SoundPlay;
 
 public class AnKaiLocalLiving extends LivingView {
 	private String TAG = "AnKaiLocalLiving";
 	boolean isRecVideoing = false;
 	private ImageView playBtn,baterryInfo;
+	private VideoSurfaceView glView;
 	private Button playBack;
 	private TextView rateTextView,sdInfo;
 	private ImageButton photo, sound, videRec;
@@ -352,11 +353,16 @@ public class AnKaiLocalLiving extends LivingView {
 		LayoutInflater inflater = LayoutInflater.from(mActivity);
 		camView = inflater.inflate(R.layout.tab_play,
 				mTabHost.getTabContentView());
+
+
 		headTitle = (TextView) camView
 				.findViewById(R.id.settings_head_title_play);
 		playLayout = (RelativeLayout) camView.findViewById(R.id.play_layout);
 		playBtn = (ImageView) camView.findViewById(R.id.play_btn);
 		playBack = (Button) camView.findViewById(R.id.settings_back_play);
+
+		glView = (VideoSurfaceView) camView.findViewById(R.id.paly_surf);
+
 		playBack.setOnClickListener(playBackOnclClickListener);
 		playBack.setVisibility(View.GONE);
 		rateTextView = (TextView) camView.findViewById(R.id.rate);
@@ -599,6 +605,9 @@ public class AnKaiLocalLiving extends LivingView {
 
 	@Override
 	public void initCam() {
+		//lib.jopenglInit(glView.getHolder().getSurface());
+
+
 		SocketFunction.getInstance().deviceStatus();
 		playBtn.setOnClickListener(null);
 		playText.setVisibility(View.GONE);
@@ -611,9 +620,9 @@ public class AnKaiLocalLiving extends LivingView {
 		//
 		VideoData.Videolist.clear();// 清空数据
 		VideoData.audioArraryList.clear();
-		recThread dataRecThread = new recThread(mHandler);
+		//recThread dataRecThread = new recThread(mHandler);
 		//
-		dataRecThread.start();
+		//dataRecThread.start();
 		SocketFunction.getInstance().mUdpSocket
 				.setmVideoListener(mVideoListener);
 		sound.setOnClickListener(soundOnClickListener);

@@ -8,23 +8,7 @@
 
 #ifndef shaderUtils_hpp
 #define shaderUtils_hpp
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/time.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <dlfcn.h>
-#include <pthread.h>
-
-#include "jni.h"
-#include "GLES/gl.h"
-#include "GLES/glext.h"
-#include <SLES/OpenSLES.h>
-#include "SLES/OpenSLES_Android.h"
+#include <GLES2/gl2.h>
 
 class ShaderUtils {
 public:
