@@ -10,41 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f72d1be-7214-4217-9629-60e20d83c0c2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_myanyCamM_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_myanyCamM_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_myanyCamM_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_myanyCamM_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/initActivity/build.gradle" afterPath="$PROJECT_DIR$/initActivity/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/initActivity/initActivity.iml" afterPath="$PROJECT_DIR$/initActivity/initActivity.iml" />
-      <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/build.gradle" afterPath="$PROJECT_DIR$/myanyCamM/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/myanyCamM.iml" afterPath="$PROJECT_DIR$/myanyCamM/myanyCamM.iml" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/myanyCamM/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/cam/CallAcceptActivity.java" afterPath="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/cam/CallAcceptActivity.java" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/AnKaiLocalLiving.java" afterPath="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/AnKaiLocalLiving.java" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java" afterPath="$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/Android.mk" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/Android.mk" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/jniMain.cpp" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/jniMain.cpp" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/jniMain.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/jniMain.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/shaderUtils.cpp" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/shaderUtils.cpp" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/shaderUtils.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/shaderUtils.h" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jniLibs/armeabi-v7a/libffmpegutils.so" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jniLibs/armeabi-v7a/libffmpegutils.so" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jniLibs/armeabi/libffmpegutils.so" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jniLibs/armeabi/libffmpegutils.so" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/libs/armeabi/libffmpegutils.so" afterPath="$PROJECT_DIR$/myanyCamM/src/main/libs/armeabi/libffmpegutils.so" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/libffmpegutils.so" afterPath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/libffmpegutils.so" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/objs/ffmpegutils/jniMain.o" afterPath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/objs/ffmpegutils/jniMain.o" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/objs/ffmpegutils/jniMain.o.d" afterPath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/objs/ffmpegutils/jniMain.o.d" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/objs/ffmpegutils/shaderUtils.o" afterPath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/objs/ffmpegutils/shaderUtils.o" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/objs/ffmpegutils/shaderUtils.o.d" afterPath="$PROJECT_DIR$/myanyCamM/src/main/obj/local/armeabi/objs/ffmpegutils/shaderUtils.o.d" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/res/layout/activity_play.xml" afterPath="$PROJECT_DIR$/myanyCamM/src/main/res/layout/activity_play.xml" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/res/values-hdpi/styles.xml" afterPath="$PROJECT_DIR$/myanyCamM/src/main/res/values-hdpi/styles.xml" />
-      <change beforePath="$PROJECT_DIR$/myanycamm.iml" afterPath="$PROJECT_DIR$/myanycamm.iml" />
     </list>
     <ignored path="myanycamm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -120,8 +92,8 @@
       <file leaf-file-name="VideoSurfaceView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+            <state relative-caret-position="44">
+              <caret line="72" column="54" lean-forward="false" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,14 +113,14 @@
       </file>
       <file leaf-file-name="activity_play.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/res/layout/activity_play.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1860">
               <caret line="124" column="31" lean-forward="false" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
@@ -164,14 +136,14 @@
       </file>
       <file leaf-file-name="tab_play.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/res/layout/tab_play.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
@@ -3274,7 +3246,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="45" />
+    <option name="x" value="71" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="653" />
@@ -3342,39 +3314,11 @@
     <panes>
       <pane id="ProjectPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
-            <path>
-              <item name="myanycamm" type="1abcf292:AndroidViewProjectNode" />
-              <item name="myanyCamM" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="myanycamm" type="1abcf292:AndroidViewProjectNode" />
-              <item name="myanyCamM" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="myanycamm" type="1abcf292:AndroidViewProjectNode" />
-              <item name="myanyCamM" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myanycamm" type="1abcf292:AndroidViewProjectNode" />
-              <item name="myanyCamM" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="thSDK" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myanycamm" type="1abcf292:AndroidViewProjectNode" />
-              <item name="myanyCamM" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="cam" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
             <path>
               <item name="myanycamm" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
@@ -3749,7 +3693,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="45" y="23" width="1440" height="653" extended-state="0" />
+    <frame x="71" y="23" width="1440" height="653" extended-state="0" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897195" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897195" sideWeight="0.49427754" order="6" side_tool="false" content_ui="tabs" />
@@ -3757,21 +3701,21 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36074767" sideWeight="0.51287556" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3271028" sideWeight="0.13018598" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5775701" sideWeight="0.48569384" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897195" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897195" sideWeight="0.49427754" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36074767" sideWeight="0.48712447" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36074767" sideWeight="0.48426324" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271028" sideWeight="0.8748212" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3271028" sideWeight="0.86981404" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3878,7 +3822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4023,13 +3966,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/res/layout/activity_call_accept.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
           <caret line="99" column="33" lean-forward="false" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/cam/MoreInfoActivity.java">
@@ -4082,13 +4025,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/res/drawable-hdpi/tab_icon_cam.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="49" lean-forward="false" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/app/Activity.java">
@@ -4146,14 +4089,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/res/layout/tab_play.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/view/View.java">
@@ -4165,14 +4108,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/res/layout/activity_play.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1860">
           <caret line="124" column="31" lean-forward="false" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/cam/CameraCenterActivity.java">
@@ -4219,8 +4162,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+        <state relative-caret-position="44">
+          <caret line="72" column="54" lean-forward="false" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

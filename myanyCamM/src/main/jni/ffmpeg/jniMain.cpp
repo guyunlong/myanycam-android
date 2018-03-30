@@ -103,7 +103,7 @@ int jvideo_decode_init(JNIEnv* env, jclass obj,int type,int width,int height)
     if (_video.CodecV) {
          LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
     }
-  //App.Video[Chl].ContextV = avcodec_alloc_context();//old
+  //_video.ContextV = avcodec_alloc_context();//old
   _video.ContextV = avcodec_alloc_context();//new
   _video.ContextV->time_base.num = 1; //’‚¡Ω––£∫“ª√Î÷”25÷°
   _video.ContextV->time_base.den = 25;
@@ -118,8 +118,8 @@ int jvideo_decode_init(JNIEnv* env, jclass obj,int type,int width,int height)
         LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
     }
 LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
-  //App.Video[Chl].Frame422 = avcodec_alloc_frame();//old
-  //App.Video[Chl].FrameRGB565/*tmpAV*/ = avcodec_alloc_frame();//old
+  //_video.Frame422 = avcodec_alloc_frame();//old
+  //_video.FrameRGB565/*tmpAV*/ = avcodec_alloc_frame();//old
   _video.Frame422 = avcodec_alloc_frame();//new
   _video.FrameRGB565/*tmpAV*/ = avcodec_alloc_frame();//new
   avpicture_fill((AVPicture*)_video.FrameRGB565,
@@ -158,18 +158,18 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
 #ifdef IS_TEST
   struct timeval tv1, tv2; gettimeofday(&tv1, NULL);
 #endif
-    AVFrame *yuvFrame = avcodec_alloc_frame();
+   
     
   while (packet.size > 0)
   {
      
-    size = avcodec_decode_video2(_video.ContextV,yuvFrame, &gotPicture, &packet);
+    size = avcodec_decode_video2(_video.ContextV,_video.Frame422, &gotPicture, &packet);
   
       if (gotPicture == 0)
     {
        LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
        
-      size = avcodec_decode_video2(_video.ContextV, yuvFrame, &gotPicture, &packet);
+      size = avcodec_decode_video2(_video.ContextV, _video.Frame422, &gotPicture, &packet);
       break;
     }
     packet.size -= size;
@@ -183,15 +183,15 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
     
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, yTextureId);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, yuvFrame->linesize[0], yuvFrame->height,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, yuvFrame->data[0]);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, _video.Frame422->linesize[0], _video.Frame422->height,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, _video.Frame422->data[0]);
     
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, uTextureId);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE,  yuvFrame->linesize[1], yuvFrame->height/2,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, yuvFrame->data[1]);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE,  _video.Frame422->linesize[1], _video.Frame422->height/2,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, _video.Frame422->data[1]);
     
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, vTextureId);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE,  yuvFrame->linesize[2], yuvFrame->height/2,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, yuvFrame->data[2]);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE,  _video.Frame422->linesize[2], _video.Frame422->height/2,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, _video.Frame422->data[2]);
     
     
     /***
@@ -449,4 +449,91 @@ int jopengl_Render(JNIEnv* env, jclass obj)
     check_gl_error("glTexImage2D");
   return 1;
 }
+
+void video_decode_Record(int Chl, u8* Buf, int Len, bool IsIFrame)
+{
+    if (!_video.IsRec) return;
+    
+    if (_video.Flag_StartRec && IsIFrame)
+    {
+        _video.Flag_StartRec = false;
+    }
+    
+    if (_video.Flag_StartRec == false && Len > 0)
+    {
+        AVPacket pkt;
+        av_init_packet(&pkt);
+        pkt.stream_index = 0;//_video.avStreamV->index;
+        pkt.data = Buf;
+        pkt.size = Len;
+        /*
+         pkt.flags |= AV_PKT_FLAG_KEY;
+         pts = pkt.pts;
+         pkt.pts += last_pts;
+         dts = pkt.dts;
+         pkt.dts += last_dts;
+         pkt.stream_index = 0;
+         */
+        static int num = 1;
+        LOGE("frame %d\n", num++);
+        av_interleaved_write_frame(_video.avContext, &pkt);
+    }
+}
+int jlocal_StartRec(JNIEnv* env, jclass obj, int Chl, jstring nFilename)
+{
+    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    strcpy(_video.FileName_Rec, (char*)env->GetStringUTFChars(nFilename, NULL));
+    
+
+    avcodec_register_all();
+    av_register_all();
+    avformat_alloc_output_context2(&_video.avContext, NULL, NULL, _video.FileName_Rec);
+    if (!_video.avContext) return 0;
+    _video.avStreamV = avformat_new_stream(_video.avContext, NULL);
+    _video.avStreamV->index = 0;
+    _video.avStreamV->codec->frame_number = 1;
+    _video.avStreamV->codec->bit_rate = 3000000;//25
+    _video.avStreamV->codec->codec_id = CODEC_ID_H264;//i_video_stream->codec->codec_id;
+    _video.avStreamV->codec->codec_type = AVMEDIA_TYPE_VIDEO;//i_video_stream->codec->codec_type;
+    _video.avStreamV->codec->time_base.num = 1;//i_video_stream->time_base.num;
+    //_video.avStreamV->codec->time_base.den = 25;//i_video_stream->time_base.den;
+    _video.avStreamV->codec->time_base.den = _video.RecFrameRate;
+    _video.avStreamV->codec->width = _video.encWidth;
+    _video.avStreamV->codec->height = _video.encHeight;
+    _video.avStreamV->codec->pix_fmt = PIX_FMT_YUV420P;//i_video_stream->codec->pix_fmt;
+    
+    _video.avContext->oformat->flags |= CODEC_FLAG_GLOBAL_HEADER;
+    
+    avio_open(&_video.avContext->pb, _video.FileName_Rec, AVIO_FLAG_WRITE);
+    avformat_write_header(_video.avContext, NULL);
+    
+    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+
+    _video.IsRec = true;
+    _video.Flag_StartRec = true;
+    
+    return 1;
+}
+//-------------------------------------------------------------------------
+int jlocal_StopRec(JNIEnv* env, jclass obj, int Chl)
+{
+    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    _video.IsRec = false;
+    _video.Flag_StopRec = true;
+
+    if (_video.avContext)
+    {
+        av_write_trailer(_video.avContext);
+        
+        avcodec_close(_video.avContext->streams[0]->codec);//  _video.avStreamV->codec
+        av_freep(&_video.avContext->streams[0]->codec);
+        av_freep(&_video.avContext->streams[0]);
+        avio_close(_video.avContext->pb);
+        av_free(_video.avContext);
+    }
+    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+
+    return 1;
+}
+
 
