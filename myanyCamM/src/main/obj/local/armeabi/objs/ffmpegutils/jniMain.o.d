@@ -2,6 +2,10 @@
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jniMain.cpp \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jniMain.h \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jni.h \
+ /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jpeg.h \
+ /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/libjpeg/jpeglib.h \
+ /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/libjpeg/jconfig.h \
+ /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/libjpeg/jmorecfg.h \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/GLES/gl.h \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/GLES/glplatform.h \
  /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/GLES/glext.h \
@@ -38,6 +42,14 @@
 /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jniMain.h:
 
 /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jni.h:
+
+/Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/jpeg.h:
+
+/Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/libjpeg/jpeglib.h:
+
+/Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/libjpeg/jconfig.h:
+
+/Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/libjpeg/jmorecfg.h:
 
 /Users/gyl1/anycam/myanycamm/myanyCamM/src/main/jni/ffmpeg/GLES/gl.h:
 

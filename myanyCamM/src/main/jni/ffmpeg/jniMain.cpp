@@ -2,6 +2,7 @@
 //#include "GLES/gl.h"
 //#include "GLES/glext.h"
 #include "shaderUtils.h"
+
 #include <EGL/egl.h>
 #include <android/native_window_jni.h>
 MyVideo _video;
@@ -159,7 +160,7 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
   struct timeval tv1, tv2; gettimeofday(&tv1, NULL);
 #endif
    
-    
+      // AVFrame *yuvFrame = avcodec_alloc_frame();
   while (packet.size > 0)
   {
      
@@ -178,7 +179,11 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
   }
   if (gotPicture <= 0) return 0;
    
- LOGE("gotPicture is %d,%s(%d) \n",gotPicture, __FUNCTION__, __LINE__);
+    
+    video_decode_SnapShot();
+    video_decode_Record((u8*)Buf,Len,true);
+    
+ LOGE("gotPicture is %d,_video.Frame422->width is %d  _video.Frame422->height is %d,,%s(%d) \n",gotPicture,_video.Frame422->width,_video.Frame422->height, __FUNCTION__, __LINE__);
     
     
     glActiveTexture(GL_TEXTURE0);
@@ -226,6 +231,44 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
 
   return (gotPicture > 0);
 }
+
+void video_decode_SnapShot()
+{
+    if (_video.IsSnapShot == false) return;
+    _video.IsSnapShot = false;
+    
+    int w = _video.ContextV->width;
+    int h = _video.ContextV->height;
+    int linesize[4] = {w * 3, 0, 0, 0};
+    //PIX_FMT_BGR24 && SaveToBmp
+    //PIX_FMT_RGB24 && rgb24_jpg
+    struct SwsContext* sws = sws_getContext(w, h, PIX_FMT_YUV420P, w, h,PIX_FMT_RGB24, SWS_POINT, NULL, NULL, NULL);
+    if (sws)
+    {
+        char* rgbBuf = (char*)malloc(w * h * 3);
+        sws_scale(sws,
+                  (const u8* const*)_video.Frame422->data,
+                  _video.Frame422->linesize,
+                  0,
+                  h,
+                  (u8**)&rgbBuf,
+                  linesize);
+        sws_freeContext(sws);
+        
+        rgb24_jpg(_video.FileName_Jpg, rgbBuf, w, h);
+        free(rgbBuf);
+    }
+}
+int jlocal_SnapShot(JNIEnv* env, jclass obj, jstring nFileName)
+{
+    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    strcpy(_video.FileName_Jpg, (char*)env->GetStringUTFChars( nFileName, NULL));
+    _video.IsSnapShot = true;
+    
+    return 1;
+}
+
+
 //-----------------------------------------------------------------------------
 //*****************************************************************************
 //*****************************************************************************
@@ -241,8 +284,11 @@ static JNINativeMethod MethodLst[] = {
     {"jvideo_decode_frame", "([BI)I", (void*)jvideo_decode_frame},
   //render
   {"jopengl_Resize", "(II)I", (void*)jopengl_Resize},
-  {"jopenglInit", "(Landroid/view/Surface;)I", (void*)jopenglInit},
+  {"jopenglInit", "(Landroid/view/Surface;II)I", (void*)jopenglInit},
   {"jopengl_Render", "()I", (void*)jopengl_Render},
+  {"jlocal_SnapShot", "(Ljava/lang/String;)I", (void*)jlocal_SnapShot},
+    {"jlocal_StartRec", "(Ljava/lang/String;)I", (void*)jlocal_StartRec},
+    {"jlocal_StopRec", "()I", (void*)jlocal_StopRec},
     
   //local
  
@@ -274,7 +320,7 @@ void check_gl_error(const char* op)
     LOGI("after %s() glError (0x%x)\n", op, error);
 }
 //-------------------------------------------------------------------------
-int jopenglInit(JNIEnv* env, jclass obj, jobject surface){
+int jopenglInit(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxheight){
     /**
      *初始化egl
      **/
@@ -337,8 +383,12 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface){
     
     
     //因为没有用矩阵所以就手动自适应
-    int videoWidth = 1280;
-    int videoHeight = 720;
+    int videoWidth = cnxwidth;
+    int videoHeight = cnxheight;
+    if (cnxwidth > 1280) {
+        videoWidth = 1280;
+        videoHeight = 720;
+    }
     
     int left,top,viewWidth,viewHeight;
     if(windowHeight > windowWidth){
@@ -352,6 +402,7 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface){
         viewWidth = (int)(videoWidth*1.0f/videoHeight*viewHeight);
         left = (windowWidth - viewWidth)/2;
     }
+     LOGE("left is %d, top is %d ,viewWidth is %d,viewheight is %d,%s(%d) \n",left,top,viewWidth,viewHeight, __FUNCTION__, __LINE__);
     glViewport(left, top, viewWidth, viewHeight);
     
     glUseProgram(programId);
@@ -450,17 +501,19 @@ int jopengl_Render(JNIEnv* env, jclass obj)
   return 1;
 }
 
-void video_decode_Record(int Chl, u8* Buf, int Len, bool IsIFrame)
+void video_decode_Record(u8* Buf, int Len, bool IsIFrame)
 {
+     LOGE("video_decode_Record ,len is %d,isrec is %d,%s(%d)\n",Len ,_video.IsRec,__FUNCTION__, __LINE__);
     if (!_video.IsRec) return;
     
     if (_video.Flag_StartRec && IsIFrame)
     {
         _video.Flag_StartRec = false;
     }
-    
+    LOGE("video_decode_Record ,len is %d,%s(%d)\n",Len ,__FUNCTION__, __LINE__);
     if (_video.Flag_StartRec == false && Len > 0)
     {
+        
         AVPacket pkt;
         av_init_packet(&pkt);
         pkt.stream_index = 0;//_video.avStreamV->index;
@@ -475,20 +528,23 @@ void video_decode_Record(int Chl, u8* Buf, int Len, bool IsIFrame)
          pkt.stream_index = 0;
          */
         static int num = 1;
-        LOGE("frame %d\n", num++);
+        LOGE("frame %d,%s(%d)\n", num++,__FUNCTION__, __LINE__);
         av_interleaved_write_frame(_video.avContext, &pkt);
     }
 }
-int jlocal_StartRec(JNIEnv* env, jclass obj, int Chl, jstring nFilename)
+int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename)
 {
-    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    LOGE("jlocal_StartRec ,%s(%d)\n", __FUNCTION__, __LINE__);
     strcpy(_video.FileName_Rec, (char*)env->GetStringUTFChars(nFilename, NULL));
     
-
+   LOGE("jlocal_StartRec video.FileName_Rec %s,%s(%d)\n",_video.FileName_Rec, __FUNCTION__, __LINE__);
     avcodec_register_all();
     av_register_all();
     avformat_alloc_output_context2(&_video.avContext, NULL, NULL, _video.FileName_Rec);
-    if (!_video.avContext) return 0;
+    if (!_video.avContext)  {
+        LOGE("jlocal_StartRec return %s(%d)\n", __FUNCTION__, __LINE__);
+        return 0;
+    }
     _video.avStreamV = avformat_new_stream(_video.avContext, NULL);
     _video.avStreamV->index = 0;
     _video.avStreamV->codec->frame_number = 1;
@@ -515,9 +571,9 @@ int jlocal_StartRec(JNIEnv* env, jclass obj, int Chl, jstring nFilename)
     return 1;
 }
 //-------------------------------------------------------------------------
-int jlocal_StopRec(JNIEnv* env, jclass obj, int Chl)
+int jlocal_StopRec(JNIEnv* env, jclass obj)
 {
-    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    LOGE("jlocal_StopRec %s(%d)\n", __FUNCTION__, __LINE__);
     _video.IsRec = false;
     _video.Flag_StopRec = true;
 

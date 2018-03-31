@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
     android:background="@color/app_black_background"
     android:orientation="vertical" >
-
+    <com.thSDK.VideoSurfaceView
+        android:id="@+id/paly_surf"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        />
     <LinearLayout
         android:id="@+id/head_layout"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@color/black" >
@@ -119,22 +124,16 @@
             android:layout_marginTop="20dp"
             android:text="@string/click_play"
             android:textSize="16dp" />
+        <ImageView
+            android:id="@+id/play_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:src="@drawable/big_playmiddle" />
     </RelativeLayout>
 
 
-    <com.thSDK.VideoSurfaceView
-        android:id="@+id/paly_surf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        />
 
-    <ImageView
-        android:id="@+id/play_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:clickable="true"
-        android:src="@drawable/big_playmiddle" />
 
 </RelativeLayout>

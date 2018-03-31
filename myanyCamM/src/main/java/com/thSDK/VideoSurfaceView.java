@@ -1,6 +1,8 @@
 package com.thSDK;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -20,7 +22,11 @@ import static com.thSDK.lib.tag;
 
 public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callback,Runnable {
     public SurfaceHolder surfaceHolder;
+    private Handler mHandler;
 
+    public void setHandler(Handler handler){
+        mHandler = handler;
+    }
     public VideoSurfaceView(Context context) {
         super(context);
         init();
@@ -52,7 +58,7 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         new Thread(this).start();
     }
     public void run() {
-        lib.jopenglInit(VideoSurfaceView.this.surfaceHolder.getSurface());
+
         Log.e(tag,"surface run");
         AppServer.isDisplayVideo = true;
         while (AppServer.isDisplayVideo)
@@ -155,12 +161,14 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
             if (buf[6] == 0x08) {
                 width = 640;
                 height = 360;
+                //height = 480;
             }
             if (buf[6] == 0x09) {
                 width = 320;
                 height = 180;
             }
             ELog.i(TAG, "width:" + width + "height:" + height);
+            lib.jopenglInit(VideoSurfaceView.this.surfaceHolder.getSurface(),width,height);
             jvideo_decode_init(type, width, height);
         }
 
@@ -174,7 +182,9 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
         int n = jvideo_decode_frame( bmp, total - 7);
         ELog.e(TAG, "解码n:" + n+"thead id is "+Thread.currentThread().getId());
-
+        if (n>0){
+            mHandler.sendMessage(Message.obtain(mHandler, 21, null));
+        }
 
 
 

@@ -25,6 +25,7 @@
 
 extern "C"{
 #include "jni.h"
+#include "jpeg.h"
 #include "GLES/gl.h"
 #include "GLES/glext.h"
 #include <SLES/OpenSLES.h>
@@ -104,16 +105,18 @@ int jvideo_decode_init(JNIEnv* env, jclass obj,int type,int width,int height);
 
 int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len);
 int video_decode_Free();
-
+int jlocal_StopRec(JNIEnv* env, jclass obj);
+int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename);
 
 
 
 //render
 int jopengl_Resize(JNIEnv* env, jclass obj, int w, int h);
 int jopengl_Render(JNIEnv* env, jclass obj);
-int jopenglInit(JNIEnv* env, jclass obj, jobject h);
-
-
+int jopenglInit(JNIEnv* env, jclass obj, jobject h,jint width,jint height);
+int jlocal_SnapShot(JNIEnv* env, jclass obj, jstring nFileName);
+void video_decode_SnapShot();
+void video_decode_Record(u8* Buf, int Len, bool IsIFrame);
 
 #endif
 

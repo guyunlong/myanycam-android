@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -43,6 +42,7 @@ import com.myanycamm.utils.ELog;
 import com.myanycamm.utils.FileUtils;
 import com.myanycamm.utils.Utils;
 import com.thSDK.VideoSurfaceView;
+import com.thSDK.lib;
 
 import java.io.IOException;
 
@@ -52,12 +52,11 @@ public class AnKaiLocalLiving extends LivingView {
 	private String TAG = "AnKaiLocalLiving";
 	boolean isRecVideoing = false;
 	private ImageView playBtn,baterryInfo;
-	private VideoSurfaceView glView;
 	private Button playBack;
 	private TextView rateTextView,sdInfo;
 	private ImageButton photo, sound, videRec;
 	private RelativeLayout mediaControllerLayout;
-	private SurfaceView mSurfaceView;
+	private VideoSurfaceView mSurfaceView;
 	SurfaceHolder surfaceHolder;
 
 	private static final int SET_Img = 21;
@@ -116,7 +115,7 @@ public class AnKaiLocalLiving extends LivingView {
 					mActivity
 							.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 					mSurfaceView.setOnTouchListener(surfaceOnTouchListener);
-					showMedia(sDefaultTimeout);
+
 				}
 				isFirstVideo = false;
 
@@ -200,12 +199,20 @@ public class AnKaiLocalLiving extends LivingView {
 			}
 
 			try {
-				FileUtils.saveFile(bitmap,
-						"myanycam" + SystemClock.currentThreadTimeMillis()
-								+ ".png", PhotoListView.mCardPath);
+//				FileUtils.saveFile(bitmap,
+//						"myanycam" + SystemClock.currentThreadTimeMillis()
+//								+ ".png", PhotoListView.mCardPath);
+				String capturePath =  FileUtils.createFile("myanycam" + SystemClock.currentThreadTimeMillis()
+						+ ".png",PhotoListView.mCardPath);
+				Log.e("ankailocalliving",capturePath);
+				if (capturePath.length()>0){
+                    lib.jlocal_SnapShot(capturePath);
+                }
+
 				Toast.makeText(mActivity,
 						mActivity.getString(R.string.save_success),
 						Toast.LENGTH_SHORT).show();
+
 			} catch (IOException e) {
 				ELog.i(TAG, "保存失败>.." + e.getMessage());
 				Toast.makeText(mActivity,
@@ -299,11 +306,22 @@ public class AnKaiLocalLiving extends LivingView {
 				SocketFunction.getInstance().manualRecord(0);
 				// VideoData.audioArraryList.clear();
 				// sf.mUdpSocket.colseSenAudioSwitch();
+				lib.jlocal_StopRec();
 			} else {
 				SocketFunction.getInstance().manualRecord(1);
 				isRecVideoing = true;
 				videRec.setImageResource(R.drawable.play_rec_btn_on);
 				// new RecordPlayThread().start();
+
+				try {
+					String videoPath =  FileUtils.createFile("myanycam" + SystemClock.currentThreadTimeMillis()
+                            + ".mp4",PhotoListView.mCardPath);
+					lib.jlocal_StartRec(videoPath);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+
 			}
 
 		}
@@ -361,8 +379,8 @@ public class AnKaiLocalLiving extends LivingView {
 		playBtn = (ImageView) camView.findViewById(R.id.play_btn);
 		playBack = (Button) camView.findViewById(R.id.settings_back_play);
 
-		glView = (VideoSurfaceView) camView.findViewById(R.id.paly_surf);
-
+		mSurfaceView = (VideoSurfaceView) camView.findViewById(R.id.paly_surf);
+		mSurfaceView.setHandler(mHandler);
 		playBack.setOnClickListener(playBackOnclClickListener);
 		playBack.setVisibility(View.GONE);
 		rateTextView = (TextView) camView.findViewById(R.id.rate);
@@ -381,7 +399,7 @@ public class AnKaiLocalLiving extends LivingView {
 				.findViewById(R.id.mediacontroll);
 		mediaControllerLayout.getBackground().setAlpha(50);
 		headLayout = (LinearLayout) camView.findViewById(R.id.head_layout);
-		mSurfaceView = (SurfaceView) camView.findViewById(R.id.paly_surf);
+
 		surfaceHolder = mSurfaceView.getHolder();
 		mActivity
 				.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
