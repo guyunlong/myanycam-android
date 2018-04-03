@@ -73,11 +73,13 @@ typedef struct videoCfg{
         //rec
         AVFormatContext* avContext;
         AVStream* avStreamV;
+        bool isEncoding;
         
         u8* bufferRecYUV420;
         u8 avEncBuf[1000*200];
         AVFrame* avFrameV;
         AVOutputFormat* avfmt;
+    
         
         char DevIP[100];
         int DevPort;
@@ -116,7 +118,7 @@ int jopengl_Render(JNIEnv* env, jclass obj);
 int jopenglInit(JNIEnv* env, jclass obj, jobject h,jint width,jint height);
 int jlocal_SnapShot(JNIEnv* env, jclass obj, jstring nFileName);
 void video_decode_SnapShot();
-void video_decode_Record(u8* Buf, int Len, bool IsIFrame);
+void video_decode_Record(AVFrame * pFrame);
 
 #endif
 

@@ -311,7 +311,7 @@ public class AnKaiLocalLiving extends LivingView {
 				SocketFunction.getInstance().manualRecord(1);
 				isRecVideoing = true;
 				videRec.setImageResource(R.drawable.play_rec_btn_on);
-				// new RecordPlayThread().start();
+				 //new CloudLivingView.RecordPlayThread().start();
 
 				try {
 					String videoPath =  FileUtils.createFile("myanycam" + SystemClock.currentThreadTimeMillis()

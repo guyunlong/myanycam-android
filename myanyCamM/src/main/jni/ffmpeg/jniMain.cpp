@@ -95,17 +95,17 @@ int jvideo_decode_init(JNIEnv* env, jclass obj,int type,int width,int height)
     sps = pps = NULL;
     spsSize = ppsSize = 0;
   LOGE("type is %d,wid is %d,height is %d,%s(%d)\n",type,width,height, __FUNCTION__, __LINE__);
-  if (_video.encWidth  == 0) _video.encWidth  = 1280;
-  if (_video.encHeight == 0) _video.encHeight  = 720;
+  if (_video.encWidth  == 0) _video.encWidth  = width;
+  if (_video.encHeight == 0) _video.encHeight  = height;
   av_register_all();
- // avcodec_register_all();
+  avcodec_register_all();
 
- _video.CodecV = avcodec_find_decoder(CODEC_ID_H264);
+ _video.CodecV = avcodec_find_decoder(AV_CODEC_ID_H264);
     if (_video.CodecV) {
          LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
     }
   //_video.ContextV = avcodec_alloc_context();//old
-  _video.ContextV = avcodec_alloc_context();//new
+  _video.ContextV = avcodec_alloc_context3(_video.CodecV);//new
   _video.ContextV->time_base.num = 1; //’‚¡Ω––£∫“ª√Î÷”25÷°
   _video.ContextV->time_base.den = 25;
   _video.ContextV->bit_rate = 0; //≥ı ºªØŒ™0
@@ -114,18 +114,18 @@ int jvideo_decode_init(JNIEnv* env, jclass obj,int type,int width,int height)
   _video.ContextV->width = width; //’‚¡Ω––£∫ ”∆µµƒøÌ∂»∫Õ∏ﬂ∂»
   _video.ContextV->height = height;
 
-  _video.ContextV->pix_fmt = PIX_FMT_YUV420P;
-    if(avcodec_open(_video.ContextV, _video.CodecV)<0){
+  _video.ContextV->pix_fmt = AV_PIX_FMT_YUV420P;
+    if(avcodec_open2(_video.ContextV, _video.CodecV,NULL)<0){
         LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
     }
 LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
   //_video.Frame422 = avcodec_alloc_frame();//old
   //_video.FrameRGB565/*tmpAV*/ = avcodec_alloc_frame();//old
-  _video.Frame422 = avcodec_alloc_frame();//new
-  _video.FrameRGB565/*tmpAV*/ = avcodec_alloc_frame();//new
+  _video.Frame422 = av_frame_alloc();//new
+  _video.FrameRGB565/*tmpAV*/ = av_frame_alloc();//new
   avpicture_fill((AVPicture*)_video.FrameRGB565,
     (u8*)_video.bufferRGB565,
-    PIX_FMT_RGB565,
+    AV_PIX_FMT_RGB565,
     TEXTURE_WIDTH,
     TEXTURE_HEIGHT);
  
@@ -135,7 +135,7 @@ LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
     _video.ContextV->pix_fmt,
     TEXTURE_WIDTH,
     TEXTURE_HEIGHT,
-    PIX_FMT_RGB565,
+    AV_PIX_FMT_RGB565,
     SWS_POINT,
     NULL,
     NULL,
@@ -181,7 +181,7 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
    
     
     video_decode_SnapShot();
-    video_decode_Record((u8*)Buf,Len,true);
+    video_decode_Record(_video.Frame422);
     
  LOGE("gotPicture is %d,_video.Frame422->width is %d  _video.Frame422->height is %d,,%s(%d) \n",gotPicture,_video.Frame422->width,_video.Frame422->height, __FUNCTION__, __LINE__);
     
@@ -242,7 +242,7 @@ void video_decode_SnapShot()
     int linesize[4] = {w * 3, 0, 0, 0};
     //PIX_FMT_BGR24 && SaveToBmp
     //PIX_FMT_RGB24 && rgb24_jpg
-    struct SwsContext* sws = sws_getContext(w, h, PIX_FMT_YUV420P, w, h,PIX_FMT_RGB24, SWS_POINT, NULL, NULL, NULL);
+    struct SwsContext* sws = sws_getContext(w, h, AV_PIX_FMT_YUV420P, w, h,AV_PIX_FMT_RGB24, SWS_POINT, NULL, NULL, NULL);
     if (sws)
     {
         char* rgbBuf = (char*)malloc(w * h * 3);
@@ -501,37 +501,71 @@ int jopengl_Render(JNIEnv* env, jclass obj)
   return 1;
 }
 
-void video_decode_Record(u8* Buf, int Len, bool IsIFrame)
+void video_decode_Record(AVFrame * pFrame)
 {
-     LOGE("video_decode_Record ,len is %d,isrec is %d,%s(%d)\n",Len ,_video.IsRec,__FUNCTION__, __LINE__);
-    if (!_video.IsRec) return;
+     if (!_video.IsRec) return;
     
-    if (_video.Flag_StartRec && IsIFrame)
-    {
-        _video.Flag_StartRec = false;
+    _video.isEncoding = true;
+    static int enc_count = 0;
+    pFrame->width = _video.encWidth;
+    pFrame->height = _video.encHeight;
+    pFrame->format = AV_PIX_FMT_YUV420P;
+    pFrame->pts = enc_count++;
+    
+    int  ret;
+    int got_output;
+    
+    LOGE("video_decode_Record,%s(%d)\n", __FUNCTION__, __LINE__);
+    AVPacket enc_pkt;
+    av_init_packet(&enc_pkt);
+     LOGE("video_decode_Record,%s(%d)\n", __FUNCTION__, __LINE__);
+    enc_pkt.data = NULL;    // packet data will be allocated by the encoder
+    enc_pkt.size = 0;
+    AVCodecContext *c;
+    //static struct SwsContext *img_convert_ctx;
+    c = _video.avStreamV->codec;
+     LOGE("video_decode_Record,%s(%d)\n", __FUNCTION__, __LINE__);
+    // int avcodec_encode_video2(AVCodecContext *avctx, AVPacket *avpkt,
+    //  const AVFrame *frame, int *got_packet_ptr);
+    //out_size = avcodec_encode_video2(c, video_outbuf, video_outbuf_size, pFrame);
+     LOGE("video_decode_Record,%s(%d)\n", __FUNCTION__, __LINE__);
+    ret = avcodec_encode_video2(c, &enc_pkt, pFrame, &got_output);
+    LOGE("enc byte is %d,GotPicture is %d", ret,got_output);
+    if(got_output == 0){
+        return ;
     }
-    LOGE("video_decode_Record ,len is %d,%s(%d)\n",Len ,__FUNCTION__, __LINE__);
-    if (_video.Flag_StartRec == false && Len > 0)
-    {
+    //printf("============================================= 3 %lld,enc size is %d\n",current_timestamp(),enc_pkt.size );
+    //    enc_pkt.stream_index =0;
+    enc_pkt.flags |= AV_PKT_FLAG_KEY;
+    enc_pkt.stream_index = _video.avStreamV->index;
+    if (enc_pkt.pts != AV_NOPTS_VALUE){
+        // printf("pts -1 is %d\n",enc_pkt.pts );
+        enc_pkt.pts =  av_rescale_q(enc_pkt.pts, c->time_base, _video.avStreamV->time_base);
+        //
+        // printf("pts 0 is %d\n",enc_pkt.pts );
+        //  int seek_ts = ((current_timestamp()-timestart)*(enc_video_st->time_base.den))/(enc_video_st->time_base.num)/1000;
+        // printf("pts seek ts  is %d,enc_video_st->time_base.den %d,enc_video_st->time_base.num %d\n",seek_ts,enc_video_st->time_base.den,enc_video_st->time_base.num);
+        // enc_pkt.pts = seek_ts;
         
-        AVPacket pkt;
-        av_init_packet(&pkt);
-        pkt.stream_index = 0;//_video.avStreamV->index;
-        pkt.data = Buf;
-        pkt.size = Len;
-        /*
-         pkt.flags |= AV_PKT_FLAG_KEY;
-         pts = pkt.pts;
-         pkt.pts += last_pts;
-         dts = pkt.dts;
-         pkt.dts += last_dts;
-         pkt.stream_index = 0;
-         */
-        static int num = 1;
-        LOGE("frame %d,%s(%d)\n", num++,__FUNCTION__, __LINE__);
-        av_interleaved_write_frame(_video.avContext, &pkt);
+        // printf("pts is %lld\n",enc_pkt.pts );
     }
+     LOGE("video_decode_Record,%s(%d)\n", __FUNCTION__, __LINE__);
+    if (enc_pkt.dts != AV_NOPTS_VALUE){
+        enc_pkt.dts = enc_pkt.pts;
+        //enc_pkt.dts = av_rescale_q(enc_pkt.dts, cc->time_base, enc_video_st->time_base);
+        //  printf("dts is %lld\n",enc_pkt.dts );
+        
+    }
+     LOGE("video_decode_Record,%s(%d)\n", __FUNCTION__, __LINE__);
+    ret = av_interleaved_write_frame(_video.avContext, &enc_pkt);
+    av_free_packet(&enc_pkt);
+     LOGE("video_decode_Record,%s(%d)\n", __FUNCTION__, __LINE__);
+    _video.isEncoding = false;
+    pthread_cond_signal(&th_sync_cond);
+    
+    
 }
+
 int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename)
 {
     LOGE("jlocal_StartRec ,%s(%d)\n", __FUNCTION__, __LINE__);
@@ -540,27 +574,93 @@ int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename)
    LOGE("jlocal_StartRec video.FileName_Rec %s,%s(%d)\n",_video.FileName_Rec, __FUNCTION__, __LINE__);
     avcodec_register_all();
     av_register_all();
-    avformat_alloc_output_context2(&_video.avContext, NULL, NULL, _video.FileName_Rec);
-    if (!_video.avContext)  {
-        LOGE("jlocal_StartRec return %s(%d)\n", __FUNCTION__, __LINE__);
-        return 0;
+    AVOutputFormat * outFmt = av_guess_format("mpeg", NULL, NULL);
+    if (!outFmt) {
+         LOGE("jlocal_StartRec guess format failed,%s(%d)\n", __FUNCTION__, __LINE__);
+        exit(1);
     }
+    _video.avContext = avformat_alloc_context();
+   // avformat_alloc_output_context2(&_video.avContext, NULL, NULL, _video.FileName_Rec);
+    //fmt = pFormatCtx->oformat;
+    _video.avContext->oformat = outFmt;
+    
+    
+    int ret = avio_open(&_video.avContext->pb, _video.FileName_Rec, AVIO_FLAG_READ_WRITE);
+    if(ret){
+        LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+        exit(1);
+    }
+    
+    
+    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
     _video.avStreamV = avformat_new_stream(_video.avContext, NULL);
+    
+    
+    if (_video.avStreamV==NULL){
+        LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+        exit(1);
+    }
+
+     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+
+    
+     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+   AVCodecContext * pCodecCtx = _video.avStreamV->codec;
+    
     _video.avStreamV->index = 0;
-    _video.avStreamV->codec->frame_number = 1;
-    _video.avStreamV->codec->bit_rate = 3000000;//25
-    _video.avStreamV->codec->codec_id = CODEC_ID_H264;//i_video_stream->codec->codec_id;
-    _video.avStreamV->codec->codec_type = AVMEDIA_TYPE_VIDEO;//i_video_stream->codec->codec_type;
-    _video.avStreamV->codec->time_base.num = 1;//i_video_stream->time_base.num;
+    pCodecCtx->frame_number = 1;
+    pCodecCtx->bit_rate = 3000000;//25
+   pCodecCtx->codec_id = outFmt->video_codec;//i_video_stream->codec->codec_id;
+    pCodecCtx->codec_type = AVMEDIA_TYPE_VIDEO;//i_video_stream->codec->codec_type;
+    pCodecCtx->time_base.num = 1;//i_video_stream->time_base.num;
     //_video.avStreamV->codec->time_base.den = 25;//i_video_stream->time_base.den;
-    _video.avStreamV->codec->time_base.den = _video.RecFrameRate;
-    _video.avStreamV->codec->width = _video.encWidth;
-    _video.avStreamV->codec->height = _video.encHeight;
-    _video.avStreamV->codec->pix_fmt = PIX_FMT_YUV420P;//i_video_stream->codec->pix_fmt;
+   pCodecCtx->time_base.den = 25;
+    pCodecCtx->width = _video.encWidth;
+   pCodecCtx->height = _video.encHeight;
+    pCodecCtx->pix_fmt = AV_PIX_FMT_YUV420P;//i_video_stream->codec->pix_fmt;
+    
+    pCodecCtx->qmin = 10;
+    pCodecCtx->qmax = 51;
     
     _video.avContext->oformat->flags |= CODEC_FLAG_GLOBAL_HEADER;
+    if (pCodecCtx->codec_id == AV_CODEC_ID_MPEG2VIDEO) {
+        /* just for testing, we also add B frames */
+        pCodecCtx->max_b_frames = 2;
+    }
+    if (pCodecCtx->codec_id == AV_CODEC_ID_MPEG1VIDEO){
+        /* Needed to avoid using macroblocks in which some coeffs overflow.
+         This does not happen with normal video, it just happens here as
+         the motion of the chroma plane does not match the luma plane. */
+        pCodecCtx->mb_decision=2;
+    }
     
-    avio_open(&_video.avContext->pb, _video.FileName_Rec, AVIO_FLAG_WRITE);
+     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    //Show some Information
+    av_dump_format(_video.avContext, 0, _video.FileName_Rec, 1);
+     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+   AVCodec * pCodec = avcodec_find_encoder(pCodecCtx->codec_id);
+    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    if (!pCodec){
+         LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+        exit(1);
+    }
+    ret = avcodec_open2(pCodecCtx, pCodec,NULL);
+    if (ret < 0){
+        char err[AV_ERROR_MAX_STRING_SIZE];
+        av_strerror(ret, err, AV_ERROR_MAX_STRING_SIZE);
+        //            fprintf(stderr, "avcodec_open2() for %s failed: %s\n", avcodec_get_name(oc->oformat->video_codec), err);
+        //            return 0;
+        
+        LOGE("ret is %d,%s,%s,%s(%d)\n",ret,avcodec_get_name(outFmt->video_codec), err, __FUNCTION__, __LINE__);
+        // fprintf(stderr, "could not open codec\n");
+       exit(1);
+    }
+    
+     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    
+ 
+    
+    
     avformat_write_header(_video.avContext, NULL);
     
     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
@@ -570,20 +670,33 @@ int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename)
     
     return 1;
 }
+
 //-------------------------------------------------------------------------
 int jlocal_StopRec(JNIEnv* env, jclass obj)
 {
-    LOGE("jlocal_StopRec %s(%d)\n", __FUNCTION__, __LINE__);
+    
     _video.IsRec = false;
     _video.Flag_StopRec = true;
+    if (_video.isEncoding) {
+        pthread_mutex_lock(&th_mutex_lock);
+        pthread_cond_wait(&th_sync_cond, &th_mutex_lock);
+        pthread_mutex_unlock(&th_mutex_lock);
+    }
+   
+    
+    LOGE("jlocal_StopRec %s(%d)\n", __FUNCTION__, __LINE__);
+    
 
     if (_video.avContext)
     {
         av_write_trailer(_video.avContext);
         
-        avcodec_close(_video.avContext->streams[0]->codec);//  _video.avStreamV->codec
-        av_freep(&_video.avContext->streams[0]->codec);
-        av_freep(&_video.avContext->streams[0]);
+        avcodec_close(_video.avStreamV->codec);//  _video.avStreamV->codec
+        for(int i = 0; i < _video.avContext->nb_streams; i++) {
+            av_freep(&_video.avContext->streams[i]->codec);
+            av_freep(&_video.avContext->streams[i]);
+        }
+      
         avio_close(_video.avContext->pb);
         av_free(_video.avContext);
     }
