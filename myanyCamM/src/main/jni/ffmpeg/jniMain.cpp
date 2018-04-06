@@ -2,7 +2,7 @@
 //#include "GLES/gl.h"
 //#include "GLES/glext.h"
 #include "shaderUtils.h"
-
+#include"ffmpeg_mp4.h"
 #include <EGL/egl.h>
 #include <android/native_window_jni.h>
 MyVideo _video;
@@ -153,6 +153,10 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
   jbyte * Buf = (jbyte*) env -> GetByteArrayElements( data, 0);
   packet.data = (uint8_t*)Buf;
   packet.size = Len;
+    
+    getSpsAndPpsInfo((uint8_t*)Buf,Len);
+    video_decode_Record2((u8*)Buf,Len);
+    
      LOGE("packet buf is %02x,len is %d,%s(%d),\n", packet.data[Len-1],Len,__FUNCTION__, __LINE__);
   int gotPicture = 0;
   int size = 0;
@@ -181,7 +185,8 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
    
     
     video_decode_SnapShot();
-    video_decode_Record(_video.Frame422);
+   // video_decode_Record(_video.Frame422);
+   // video_decode_Record1((u8*)Buf,Len);
     
  LOGE("gotPicture is %d,_video.Frame422->width is %d  _video.Frame422->height is %d,,%s(%d) \n",gotPicture,_video.Frame422->width,_video.Frame422->height, __FUNCTION__, __LINE__);
     
@@ -501,6 +506,177 @@ int jopengl_Render(JNIEnv* env, jclass obj)
   return 1;
 }
 
+void getSpsAndPpsInfo(uint8_t*buf ,int size){
+    //主要是解析idr前面的sps pps
+    if (_video.ppsSize >0 && _video.spsSize > 0) {
+        return;
+    }
+    int last = 0;
+    for (int i = 2; i <= size; ++i){
+        if (i == size) {
+            if (last) {
+                parseFrame(buf+last,i - last);
+            }
+        } else if (buf[i - 2]== 0x00 && buf[i - 1]== 0x00 && buf[i] == 0x01) {
+            if (last) {
+                int size = i - last - 3;
+                if (buf[i - 3]) ++size;
+                parseFrame(buf+last,size);
+            }
+            last = i + 1;
+        }
+    }
+    
+}
+void parseFrame(uint8_t*buf, int len){
+    
+    switch (buf[0] & 0x1f){
+        case 7: // SPS
+            
+            _video.spsSize = len;
+            _video.sps = (uint8_t*)malloc(len);
+            memcpy(_video.sps, buf, len);
+            
+            break;
+            
+        case 8: // PPS
+            _video.ppsSize = len;
+            _video.pps = (uint8_t*)malloc(len);
+            memcpy(_video.pps, buf, len);
+            break;
+            
+        case 5:
+           
+            
+            break;
+        case 1:
+           
+            break;
+            
+        default:
+            break;
+    }
+    
+    return ;
+}
+
+
+bool findIFrame(uint8_t* buf, int size){
+    //主要是解析idr前面的sps pps
+//    static bool found = false;
+//    if(found){ return true;}
+    
+    int last = 0;
+    for (int i = 2; i <= size; ++i){
+        if (i == size) {
+            if (last) {
+                bool ret = isIdrFrame(buf+last ,i - last);
+                if (ret) {
+                    //found = true;
+                    return true;
+                }
+            }
+        } else if (buf[i - 2]== 0x00 && buf[i - 1]== 0x00 && buf[i] == 0x01) {
+            if (last) {
+                int size = i - last - 3;
+                if (buf[i - 3]) ++size;
+                bool ret = isIdrFrame(buf+last ,size);
+                if (ret) {
+                    //found = true;
+                    return true;
+                }
+            }
+            last = i + 1;
+        }
+    }
+    return false;
+    
+}
+bool isIdrFrame(uint8_t* buf, int len){
+    
+    switch (buf[0] & 0x1f){
+        case 7: // SPS
+            return true;
+        case 8: // PPS
+            return true;
+        case 5:
+            return true;
+        case 1:
+            return false;
+            
+        default:
+            return false;
+            break;
+    }
+    
+    return false;
+}
+
+long long timestart;
+void video_decode_Record2(u8* Buf, int Len){
+     if (!_video.IsRec) return;
+    _video.isEncoding = true;
+    WriteVideo(Buf, Len);
+    _video.isEncoding = false;
+    pthread_cond_signal(&th_sync_cond);
+}
+void video_decode_Record1(u8* Buf, int Len){
+    if (!_video.IsRec) return;
+    bool IsIFrame = findIFrame(Buf,Len);
+    if (_video.Flag_StartRec && IsIFrame)
+    {
+        _video.Flag_StartRec = false;
+        timestart =  current_timestamp();
+    }
+    
+    if (_video.Flag_StartRec == false && Len > 0)
+    {
+         _video.isEncoding = true;
+        LOGE("packet buf is %02x,len is %d,%s(%d),\n", Buf[Len-1],Len,__FUNCTION__, __LINE__);
+        AVCodecContext *codecContext = _video.avStreamV->codec;
+        AVPacket pkt;
+        av_init_packet(&pkt);
+       
+        pkt.data = Buf;
+        pkt.size = Len;
+        
+        
+       // LOGE("frame %d\n", num++);
+        pkt.flags |= IsIFrame?AV_PKT_FLAG_KEY:0;
+        pkt.stream_index = _video.avStreamV->index;
+//        if (pkt.pts != AV_NOPTS_VALUE){
+//            // printf("pts -1 is %d\n",enc_pkt.pts );
+//            pkt.pts =  av_rescale_q(pkt.pts, codecContext->time_base, _video.avStreamV->time_base);
+//
+//        }
+//        LOGE("video_decode_Record,len is %d,%s(%d)\n",Len, __FUNCTION__, __LINE__);
+//        if (pkt.dts != AV_NOPTS_VALUE){
+//            pkt.dts = pkt.pts;
+//            //enc_pkt.dts = av_rescale_q(enc_pkt.dts, cc->time_base, enc_video_st->time_base);
+//            //  printf("dts is %lld\n",enc_pkt.dts );
+//
+//        }
+      
+        static int num = 0;
+        pkt.pts = num++*(_video.avStreamV->time_base.den)/((_video.avStreamV->time_base.num)*25);
+        pkt.dts = pkt.pts;
+        
+            LOGE("video_decode_Record,pkt.stream_index  is %d,current time is %lld,pkt.pts :%lld,pkt.dts:%lld,%s(%d)\n",pkt.stream_index,current_timestamp(),pkt.pts,pkt.dts, __FUNCTION__, __LINE__);
+//        if (pkt.pts != AV_NOPTS_VALUE){
+//            pkt.pts =  av_rescale_q(pkt.pts, codecContext->time_base, _video.avStreamV->time_base);
+//        }
+        pkt.dts = pkt.pts;
+        
+        LOGE("time base is %d,den is %d,%s(%d",codecContext->time_base.num, _video.avStreamV->time_base.num,__FUNCTION__, __LINE__);
+        LOGE("video_decode_Record,pkt.stream_index  is %d,current time is %lld,pkt.pts :%lld,pkt.dts:%lld,%s(%d)\n",pkt.stream_index,current_timestamp(),pkt.pts,pkt.dts, __FUNCTION__, __LINE__);
+        int ret = av_interleaved_write_frame(_video.avContext, &pkt);
+        LOGE("video_decode_Record,ret is %d,%s(%d)\n",ret, __FUNCTION__, __LINE__);
+        av_free_packet(&pkt);
+        _video.isEncoding = false;
+        pthread_cond_signal(&th_sync_cond);
+        
+    }
+}
 void video_decode_Record(AVFrame * pFrame)
 {
      if (!_video.IsRec) return;
@@ -549,6 +725,7 @@ void video_decode_Record(AVFrame * pFrame)
         
         // printf("pts is %lld\n",enc_pkt.pts );
     }
+    
      LOGE("video_decode_Record,%s(%d)\n", __FUNCTION__, __LINE__);
     if (enc_pkt.dts != AV_NOPTS_VALUE){
         enc_pkt.dts = enc_pkt.pts;
@@ -556,6 +733,7 @@ void video_decode_Record(AVFrame * pFrame)
         //  printf("dts is %lld\n",enc_pkt.dts );
         
     }
+     LOGE("video_decode_Record,pkt.pts :%lld,pkt.dts:%lld,%s(%d)\n",enc_pkt.pts,enc_pkt.dts, __FUNCTION__, __LINE__);
      LOGE("video_decode_Record,%s(%d)\n", __FUNCTION__, __LINE__);
     ret = av_interleaved_write_frame(_video.avContext, &enc_pkt);
     av_free_packet(&enc_pkt);
@@ -571,10 +749,16 @@ int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename)
     LOGE("jlocal_StartRec ,%s(%d)\n", __FUNCTION__, __LINE__);
     strcpy(_video.FileName_Rec, (char*)env->GetStringUTFChars(nFilename, NULL));
     
+    CreateMp4((const char*)_video.FileName_Rec);
+    _video.IsRec = true;
+    _video.Flag_StartRec = true;
+    
+    return 1;
+    
    LOGE("jlocal_StartRec video.FileName_Rec %s,%s(%d)\n",_video.FileName_Rec, __FUNCTION__, __LINE__);
     avcodec_register_all();
     av_register_all();
-    AVOutputFormat * outFmt = av_guess_format("mpeg", NULL, NULL);
+    AVOutputFormat * outFmt = av_guess_format("h264", NULL, NULL);
     if (!outFmt) {
          LOGE("jlocal_StartRec guess format failed,%s(%d)\n", __FUNCTION__, __LINE__);
         exit(1);
@@ -583,10 +767,9 @@ int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename)
    // avformat_alloc_output_context2(&_video.avContext, NULL, NULL, _video.FileName_Rec);
     //fmt = pFormatCtx->oformat;
     _video.avContext->oformat = outFmt;
-    
-    
+   
     int ret = avio_open(&_video.avContext->pb, _video.FileName_Rec, AVIO_FLAG_READ_WRITE);
-    if(ret){
+    if(ret<0){
         LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
         exit(1);
     }
@@ -595,21 +778,34 @@ int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename)
     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
     _video.avStreamV = avformat_new_stream(_video.avContext, NULL);
     
-    
     if (_video.avStreamV==NULL){
         LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
         exit(1);
     }
-
-     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
-
     
-     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
-   AVCodecContext * pCodecCtx = _video.avStreamV->codec;
+    
+    
+    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    AVCodecContext * pCodecCtx = _video.avStreamV->codec;
+    
+    AVCodec * pCodec = avcodec_find_encoder(outFmt->video_codec);
+    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+    if (!pCodec){
+        LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
+        exit(1);
+    }
+    
+    avcodec_get_context_defaults3(pCodecCtx,pCodec);
+    
+    
+    
+    
+    
     
     _video.avStreamV->index = 0;
     pCodecCtx->frame_number = 1;
     pCodecCtx->bit_rate = 3000000;//25
+    
    pCodecCtx->codec_id = outFmt->video_codec;//i_video_stream->codec->codec_id;
     pCodecCtx->codec_type = AVMEDIA_TYPE_VIDEO;//i_video_stream->codec->codec_type;
     pCodecCtx->time_base.num = 1;//i_video_stream->time_base.num;
@@ -622,7 +818,9 @@ int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename)
     pCodecCtx->qmin = 10;
     pCodecCtx->qmax = 51;
     
-    _video.avContext->oformat->flags |= CODEC_FLAG_GLOBAL_HEADER;
+   
+    
+    pCodecCtx->flags |= CODEC_FLAG_GLOBAL_HEADER;
     if (pCodecCtx->codec_id == AV_CODEC_ID_MPEG2VIDEO) {
         /* just for testing, we also add B frames */
         pCodecCtx->max_b_frames = 2;
@@ -638,13 +836,31 @@ int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename)
     //Show some Information
     av_dump_format(_video.avContext, 0, _video.FileName_Rec, 1);
      LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
-   AVCodec * pCodec = avcodec_find_encoder(pCodecCtx->codec_id);
-    LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
-    if (!pCodec){
-         LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
-        exit(1);
+ 
+    AVDictionary *param = 0;
+    //H.264
+    if(pCodecCtx->codec_id == AV_CODEC_ID_H264) {
+        av_dict_set(&param, "preset", "slow", 0);
+        av_dict_set(&param, "tune", "zerolatency", 0);
+        //av_dict_set(¶m, "profile", "main", 0);
+        
+        
+        uint8_t* tmp = NULL;
+        uint8_t nalu_header[4] = { 0, 0, 0, 1 };
+        
+        int totalsize = 8 + _video.spsSize + _video.ppsSize;
+        tmp = (unsigned char*)realloc(tmp, totalsize);
+        memcpy(tmp, nalu_header, 4);
+        memcpy(tmp + 4, _video.sps, _video.spsSize);
+        memcpy(tmp + 4 + _video.spsSize, nalu_header, 4);
+        memcpy(tmp + 4 + _video.spsSize + 4, _video.pps, _video.ppsSize);
+        
+        
+        pCodecCtx->extradata_size = totalsize;
+        pCodecCtx->extradata = tmp;      /*set the PPS SPS of H264 */
     }
-    ret = avcodec_open2(pCodecCtx, pCodec,NULL);
+    
+    ret = avcodec_open2(pCodecCtx, pCodec,&param);
     if (ret < 0){
         char err[AV_ERROR_MAX_STRING_SIZE];
         av_strerror(ret, err, AV_ERROR_MAX_STRING_SIZE);
@@ -682,6 +898,8 @@ int jlocal_StopRec(JNIEnv* env, jclass obj)
         pthread_cond_wait(&th_sync_cond, &th_mutex_lock);
         pthread_mutex_unlock(&th_mutex_lock);
     }
+    CloseMp4();
+    return 1;
    
     
     LOGE("jlocal_StopRec %s(%d)\n", __FUNCTION__, __LINE__);
@@ -703,6 +921,12 @@ int jlocal_StopRec(JNIEnv* env, jclass obj)
     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
 
     return 1;
+}
+long long current_timestamp() {
+    struct timeval te;
+    gettimeofday(&te, NULL);
+    long long milliseconds = te.tv_sec * 1000LL + te.tv_usec / 1000;
+    return milliseconds;
 }
 
 

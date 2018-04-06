@@ -100,6 +100,11 @@ typedef struct videoCfg{
         
         int VideoType;
         int IFrameFlag;
+    
+    uint8_t *sps;
+    int spsSize;
+    uint8_t *pps;
+    int ppsSize;
     }MyVideo;
 
 
@@ -118,8 +123,13 @@ int jopengl_Render(JNIEnv* env, jclass obj);
 int jopenglInit(JNIEnv* env, jclass obj, jobject h,jint width,jint height);
 int jlocal_SnapShot(JNIEnv* env, jclass obj, jstring nFileName);
 void video_decode_SnapShot();
+bool isIdrFrame(uint8_t* buf, int len);
+void parseFrame(uint8_t*buf, int len);
+void getSpsAndPpsInfo(uint8_t*buf ,int size);
 void video_decode_Record(AVFrame * pFrame);
-
+void video_decode_Record1(u8* Buf, int Len);
+void video_decode_Record2(u8* Buf, int Len);
+long long current_timestamp();
 #endif
 
 

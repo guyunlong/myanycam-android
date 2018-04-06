@@ -5,7 +5,7 @@ SDL_PATH := ../SDL
 LOCAL_MODULE    := ffmpegutils
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(SDL_PATH)/include $(LOCAL_PATH)/ffmpeg 
-LOCAL_SRC_FILES := jniMain.cpp shaderUtils.cpp \
+LOCAL_SRC_FILES := jniMain.cpp shaderUtils.cpp ffmpeg_mp4.cpp\
 jpeg.c \
 libjpeg/jcapimin.c libjpeg/jcapistd.c libjpeg/jccoefct.c libjpeg/jccolor.c libjpeg/jcdctmgr.c libjpeg/jchuff.c \
 libjpeg/jcinit.c libjpeg/jcmainct.c libjpeg/jcmarker.c libjpeg/jcmaster.c libjpeg/jcomapi.c libjpeg/jcparam.c \
