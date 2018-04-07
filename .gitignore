@@ -1,3 +1,7 @@
 build/
 gradle/
 .gradle/*
+myanyCamM/release/*
+myanyCamM/libs/*
+myanyCamM/realease/*
+myanyCamM/myanyCamM-release.apk
