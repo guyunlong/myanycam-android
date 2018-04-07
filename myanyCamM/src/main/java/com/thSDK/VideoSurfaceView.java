@@ -23,7 +23,9 @@ import static com.thSDK.lib.tag;
 public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callback,Runnable {
     public SurfaceHolder surfaceHolder;
     private Handler mHandler;
-
+//    String H264Path;
+//    DataOutputStream out;
+//    static  int frameCnt = 0;
     public void setHandler(Handler handler){
         mHandler = handler;
     }
@@ -54,7 +56,13 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
         Log.e(tag,"surface changed");
-
+//        try {
+//            H264Path =  FileUtils.createFile("myanycam" + SystemClock.currentThreadTimeMillis()
+//                    + ".264", PhotoListView.mCardPath);
+//            out=new DataOutputStream(new FileOutputStream(H264Path));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         new Thread(this).start();
     }
     public void run() {
@@ -179,7 +187,18 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         //ByteBuffer subbuf = ByteBuffer.wrap(buf,7,total-7);
         long parseTimeBefore = System.currentTimeMillis();
         ELog.i(TAG, "解码---------0" );
-
+//        try {
+//            if (frameCnt++ < 1000 && out!= null){
+//                out.write(bmp,0,total - 7);
+//            }
+//            else if (out!= null){
+//                out.close();
+//                out = null;
+//            }
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         int n = jvideo_decode_frame( bmp, total - 7);
         ELog.e(TAG, "解码n:" + n+"thead id is "+Thread.currentThread().getId());
         if (n>0){

@@ -13,180 +13,7 @@
     <list default="true" id="1f72d1be-7214-4217-9629-60e20d83c0c2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/release/myanyCamM-release.apk" afterPath="$PROJECT_DIR$/myanyCamM/release/myanyCamM-release.apk" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/AnKaiLocalLiving.java" afterPath="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/AnKaiLocalLiving.java" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/Android.mk" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/Android.mk" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/avcodec.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/avcodec.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/avfft.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/avfft.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/dxva2.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/dxva2.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/vaapi.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/vaapi.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/vda.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/vda.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/vdpau.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/vdpau.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/version.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/version.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/xvmc.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavcodec/xvmc.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavdevice/avdevice.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavdevice/avdevice.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavfilter/asrc_abuffer.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavfilter/avcodec.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavfilter/avfilter.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavfilter/avfiltergraph.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavfilter/buffersink.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavfilter/buffersrc.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavfilter/version.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavfilter/vsrc_buffer.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavformat/avformat.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavformat/avformat.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavformat/avio.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavformat/avio.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavformat/version.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavformat/version.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/adler32.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/adler32.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/aes.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/aes.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/attributes.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/attributes.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/audio_fifo.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/audio_fifo.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/audioconvert.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/avassert.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/avassert.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/avconfig.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/avconfig.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/avstring.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/avstring.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/avutil.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/avutil.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/base64.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/base64.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/bprint.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/bprint.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/bswap.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/bswap.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/common.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/common.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/cpu.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/cpu.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/crc.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/crc.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/dict.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/dict.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/error.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/error.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/eval.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/eval.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/fifo.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/fifo.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/file.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/file.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/imgutils.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/imgutils.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/intfloat.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/intfloat.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/intfloat_readwrite.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/intreadwrite.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/intreadwrite.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/lfg.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/lfg.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/log.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/log.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/lzo.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/lzo.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/mathematics.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/mathematics.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/md5.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/md5.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/mem.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/mem.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/opt.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/opt.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/parseutils.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/parseutils.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/pixdesc.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/pixdesc.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/pixfmt.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/pixfmt.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/rational.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/rational.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/samplefmt.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/samplefmt.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/sha.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/sha.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/timecode.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/timecode.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/timestamp.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libavutil/timestamp.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libswresample/swresample.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libswresample/swresample.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libswscale/swscale.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/ffmpeg/libswscale/swscale.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/jniMain.cpp" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/jniMain.cpp" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/jniMain.h" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/jniMain.h" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libavcodec.a" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libavcodec.a" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libavdevice.a" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libavdevice.a" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libavfilter.a" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libavformat.a" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libavformat.a" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libavutil.a" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libavutil.a" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libswresample.a" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libswresample.a" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libswscale.a" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jni/ffmpeg/libswscale.a" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/avcodec.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/avdct.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/avfft.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/d3d11va.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/dirac.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/dv_profile.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/dxva2.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/old_codec_ids.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/qsv.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/vaapi.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/vda.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/vdpau.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/version.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/videotoolbox.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/vorbis_parser.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavcodec/xvmc.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavdevice/avdevice.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavdevice/version.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavfilter/asrc_abuffer.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavfilter/avcodec.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavfilter/avfilter.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavfilter/avfiltergraph.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavfilter/buffersink.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavfilter/buffersrc.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavfilter/version.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavformat/avformat.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavformat/avio.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavformat/version.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/adler32.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/aes.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/aes_ctr.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/attributes.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/audio_fifo.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/audioconvert.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/avassert.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/avconfig.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/avstring.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/avutil.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/base64.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/blowfish.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/bprint.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/bswap.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/buffer.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/camellia.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/cast5.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/channel_layout.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/common.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/cpu.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/crc.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/des.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/dict.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/display.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/downmix_info.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/error.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/eval.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/ffversion.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/fifo.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/file.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/frame.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/hash.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/hmac.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/imgutils.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/intfloat.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/intreadwrite.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/lfg.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/log.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/lzo.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/macros.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/mastering_display_metadata.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/mathematics.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/md5.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/mem.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/motion_vector.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/murmur3.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/old_pix_fmts.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/opt.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/parseutils.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/pixdesc.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/pixelutils.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/pixfmt.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/random_seed.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/rational.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/rc4.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/replaygain.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/ripemd.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/samplefmt.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/sha.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/sha512.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/stereo3d.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/tea.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/threadmessage.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/time.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/timecode.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/timestamp.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/tree.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/twofish.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/version.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libavutil/xtea.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libswresample/swresample.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libswresample/version.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libswscale/swscale.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jni/include/libswscale/version.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java" afterPath="$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jniLibs/armeabi-v7a/libffmpegutils.so" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jniLibs/armeabi-v7a/libffmpegutils.so" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/jniLibs/armeabi/libffmpegutils.so" afterPath="$PROJECT_DIR$/myanyCamM/src/main/jniLibs/armeabi/libffmpegutils.so" />
       <change beforePath="$PROJECT_DIR$/myanyCamM/src/main/libs/armeabi/libffmpegutils.so" afterPath="$PROJECT_DIR$/myanyCamM/src/main/libs/armeabi/libffmpegutils.so" />
@@ -246,8 +73,8 @@
       <file leaf-file-name="AnKaiLocalLiving.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/AnKaiLocalLiving.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4245">
-              <caret line="329" column="28" lean-forward="false" selection-start-line="329" selection-start-column="28" selection-end-line="329" selection-end-column="28" />
+            <state relative-caret-position="4065">
+              <caret line="317" column="62" lean-forward="false" selection-start-line="316" selection-start-column="20" selection-end-line="317" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -258,22 +85,14 @@
       <file leaf-file-name="UdpSocket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycam/net/UdpSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3">
+            <state relative-caret-position="13575">
               <caret line="951" column="30" lean-forward="false" selection-start-line="951" selection-start-column="30" selection-end-line="951" selection-end-column="30" />
-              <folding>
-                <element signature="e#1419#1435#0" expanded="true" />
-                <element signature="e#1503#1517#0" expanded="true" />
-                <element signature="e#2746#2816#0" expanded="true" />
-                <element signature="e#2815#2816#0" expanded="true" />
-                <element signature="e#4336#5919#0" expanded="true" />
-                <element signature="e#5918#5919#0" expanded="true" />
-                <element signature="e#16908#16916#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="groovy_console.groovy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="groovy_console.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -293,26 +112,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhotoListView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/PhotoListView.java">
+      <file leaf-file-name="VideoSurfaceView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="42">
+              <caret line="205" column="9" lean-forward="true" selection-start-line="205" selection-start-column="9" selection-end-line="205" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#802#803#0" expanded="true" />
+                <element signature="e#836#837#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VideoSurfaceView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java">
+      <file leaf-file-name="DataOutputStream.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/java/io/DataOutputStream.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="80" column="56" lean-forward="false" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#720#721#0" expanded="true" />
-                <element signature="e#754#755#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1095">
+              <caret line="93" column="16" lean-forward="false" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -348,18 +167,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>surface chan</find>
-      <find>surface changed</find>
-      <find>rec</find>
-      <find>eglSwapBuffersWithDamageKHR</find>
-      <find>640</find>
-      <find>top</find>
-      <find>wid is</find>
-      <find>wid</find>
-      <find>activity_play</find>
-      <find>width is</find>
-      <find>window width</find>
-      <find>play_btn</find>
       <find>mHandler</find>
       <find>glview</find>
       <find>mSurfaceView</find>
@@ -374,10 +181,22 @@
       <find>isrec is 1</find>
       <find>720</find>
       <find>return</find>
-      <find>jlocal_StartRec</find>
       <find>码显示时间</find>
       <find>video_decode_Record</find>
       <find>open_video</find>
+      <find>jlocal_StartRec</find>
+      <find>nc byte i</find>
+      <find>enc byte</find>
+      <find>enc</find>
+      <find>decode_Record,ret is</find>
+      <find>decode_Record,pkt.pt</find>
+      <find>dts</find>
+      <find>seek</find>
+      <find>stream_index  is</find>
+      <find>.stream_index</find>
+      <find>de_Record,ret is</find>
+      <find>pts</find>
+      <find>1280</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -3429,20 +3248,19 @@
         <option value="$PROJECT_DIR$/myanyCamM/build.gradle" />
         <option value="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/cam/CallAcceptActivity.java" />
         <option value="$PROJECT_DIR$/myanyCamM/src/main/res/layout/activity_play.xml" />
-        <option value="$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java" />
         <option value="$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/lib.java" />
         <option value="$PROJECT_DIR$/myanyCamM/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/utils/FileUtils.java" />
         <option value="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/cam/CameraCenterActivity.java" />
         <option value="$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/AnKaiLocalLiving.java" />
+        <option value="$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-50" />
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="827" />
+    <option name="height" value="674" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -3505,8 +3323,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -3518,7 +3337,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -3532,7 +3350,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../myanycamm_ori" />
-    <property name="device.picker.selection" value="7b9db165" />
+    <property name="device.picker.selection" value="U8ENW18122003411" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
     <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/myanyCamM" />
     <property name="ExportApk.Flavors" value="" />
@@ -3887,24 +3705,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="827" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="674" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32722145" sideWeight="0.49427754" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.325811" sideWeight="0.48855507" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32553956" sideWeight="0.48855507" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32553956" sideWeight="0.48569384" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.70662904" sideWeight="0.5772532" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.303244" sideWeight="0.444206" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32722145" sideWeight="0.48855507" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32194245" sideWeight="0.5350501" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7194245" sideWeight="0.4248927" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32553956" sideWeight="0.4828326" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281471" sideWeight="0.4914163" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.70662904" sideWeight="0.42274678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.705036" sideWeight="0.41201717" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32299012" sideWeight="0.5164521" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32194245" sideWeight="0.46494994" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3977,13 +3796,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradle.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -4280,7 +4092,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4308,26 +4119,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="80" column="56" lean-forward="false" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#754#755#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/cam/CameraCenterActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="198" column="26" lean-forward="false" selection-start-line="198" selection-start-column="26" selection-end-line="198" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/CloudLivingView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13485">
@@ -4345,27 +4136,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycam/net/UdpSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
+        <state relative-caret-position="13575">
           <caret line="951" column="30" lean-forward="false" selection-start-line="951" selection-start-column="30" selection-end-line="951" selection-end-column="30" />
-          <folding>
-            <element signature="e#1419#1435#0" expanded="true" />
-            <element signature="e#1503#1517#0" expanded="true" />
-            <element signature="e#2746#2816#0" expanded="true" />
-            <element signature="e#2815#2816#0" expanded="true" />
-            <element signature="e#4336#5919#0" expanded="true" />
-            <element signature="e#5918#5919#0" expanded="true" />
-            <element signature="e#16908#16916#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/AnKaiLocalLiving.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4245">
-          <caret line="329" column="28" lean-forward="false" selection-start-line="329" selection-start-column="28" selection-end-line="329" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4374,6 +4147,44 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/cam/CameraCenterActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1920">
+          <caret line="198" column="26" lean-forward="false" selection-start-line="198" selection-start-column="26" selection-end-line="198" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/myanycamm/ui/AnKaiLocalLiving.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4065">
+          <caret line="317" column="62" lean-forward="false" selection-start-line="316" selection-start-column="20" selection-end-line="317" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/java/io/DataOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="93" column="16" lean-forward="false" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myanyCamM/src/main/java/com/thSDK/VideoSurfaceView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="205" column="9" lean-forward="true" selection-start-line="205" selection-start-column="9" selection-end-line="205" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#802#803#0" expanded="true" />
+            <element signature="e#836#837#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
