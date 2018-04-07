@@ -23,7 +23,7 @@ import static com.thSDK.lib.tag;
 public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callback,Runnable {
     public SurfaceHolder surfaceHolder;
     private Handler mHandler;
-//    String H264Path;
+//    String H264Path; //264写测试文件路径
 //    DataOutputStream out;
 //    static  int frameCnt = 0;
     public void setHandler(Handler handler){
