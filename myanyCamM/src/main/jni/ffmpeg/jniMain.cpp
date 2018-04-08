@@ -154,7 +154,7 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
   packet.data = (uint8_t*)Buf;
   packet.size = Len;
     
-    getSpsAndPpsInfo((uint8_t*)Buf,Len);
+   // getSpsAndPpsInfo((uint8_t*)Buf,Len);
     video_decode_Record2((u8*)Buf,Len);
     
      LOGE("packet buf is %02x,len is %d,%s(%d),\n", packet.data[Len-1],Len,__FUNCTION__, __LINE__);

@@ -56,32 +56,7 @@ bool isIdrFrame1(uint8_t* buf, int size){
 }
 
 
-int getVopType( const void *p, int len )
-{
-    if ( !p || 6 >= len )
-        return -1;
-    unsigned char *b = (unsigned char*)p;
-    // Verify NAL marker
-    if ( b[ 0 ] || b[ 1 ] || 0x01 != b[ 2 ] )
-    {   b++;
-        if ( b[ 0 ] || b[ 1 ] || 0x01 != b[ 2 ] )
-            return -1;
-    } // end if
-    b += 3;
-    // Verify VOP id
-    if ( 0xb6 == *b )
-    {
-        b++;
-        return ( *b & 0xc0 ) >> 6;
-    } // end if
-    switch( *b )
-    {
-        case 0x65 : return 0;
-        case 0x61 : return 1;
-        case 0x01 : return 2;
-    } // end switch
-    return -1;
-}
+
 /* Add an output stream */
 AVStream *add_stream(AVFormatContext *oc, AVCodec **codec, enum AVCodecID codec_id)
 {

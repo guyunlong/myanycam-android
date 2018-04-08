@@ -48,7 +48,7 @@ import java.io.IOException;
 
 import gyl.cam.SoundPlay;
 
-public class AnKaiLocalLiving extends LivingView {
+public class AnKaiLocalLiving extends LivingView implements View.OnClickListener {
 	private String TAG = "AnKaiLocalLiving";
 	boolean isRecVideoing = false;
 	private ImageView playBtn,baterryInfo;
@@ -58,6 +58,7 @@ public class AnKaiLocalLiving extends LivingView {
 	private RelativeLayout mediaControllerLayout;
 	private VideoSurfaceView mSurfaceView;
 	SurfaceHolder surfaceHolder;
+	private Button forceCrashBtn;
 
 	private static final int SET_Img = 21;
 	private static final int SHOW_CONTROLLER = 22;
@@ -399,7 +400,8 @@ public class AnKaiLocalLiving extends LivingView {
 				.findViewById(R.id.mediacontroll);
 		mediaControllerLayout.getBackground().setAlpha(50);
 		headLayout = (LinearLayout) camView.findViewById(R.id.head_layout);
-
+		forceCrashBtn =  (Button) camView.findViewById(R.id.force_crash_btn);
+		forceCrashBtn.setOnClickListener(this);
 		surfaceHolder = mSurfaceView.getHolder();
 		mActivity
 				.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -725,6 +727,18 @@ public class AnKaiLocalLiving extends LivingView {
 	@Override
 	public void stopRecord() {
 		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()){
+			case R.id.force_crash_btn:{
+				throw new RuntimeException("This is a crash");
+			}
+			default:
+				break;
+		}
 
 	}
 

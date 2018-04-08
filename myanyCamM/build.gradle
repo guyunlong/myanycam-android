@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 android {
     compileSdkVersion 23
@@ -27,10 +42,13 @@ android {
 
 dependencies {
     compile project(':initActivity')
-    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:support-v4:23.4.0'
     compile files('libs/afinal_0.5_bin.jar')
     compile files('libs/core.jar')
     compile files('libs/twitter4j-core-3.0.3.jar')
     compile files('libs/twitter4j-stream-3.0.3.jar')
     compile files('libs/umeng_sdk.jar')
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
+        transitive = true;
+    }
 }

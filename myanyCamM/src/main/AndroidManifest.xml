@@ -245,6 +245,9 @@
                 <action android:name="io.vov.vitamio.IVitamioService" />
             </intent-filter>
         </service>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d4fed762adbf5636271fae1e9fffd1bad9abf368" />
     </application>
 
 </manifest>

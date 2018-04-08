@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.myanycam.bean.CameraListInfo;
 import com.myanycam.bean.MainSocket;
 import com.myanycam.net.NetworkManager;
@@ -28,6 +29,7 @@ import com.myanycamm.utils.Constants;
 import com.myanycamm.utils.ELog;
 import com.myanycamm.zxing.client.android.CaptureActivity;
 
+import io.fabric.sdk.android.Fabric;
 import java.io.IOException;
 
 public class WelcomeActivity extends BaseActivity {
@@ -140,6 +142,7 @@ public class WelcomeActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Fabric.with(this, new Crashlytics());
 		setContentView(R.layout.activity_welcome);	
 		ELog.i(TAG, "socket:" + MainSocket.getInstance());
 		Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(WelcomeActivity.this,
