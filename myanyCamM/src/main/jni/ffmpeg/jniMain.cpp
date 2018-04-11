@@ -150,6 +150,9 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
 {
     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
   AVPacket packet;
+  packet.data = NULL;
+  packet.size = 0;
+  av_init_packet( &packet );
   jbyte * Buf = (jbyte*) env -> GetByteArrayElements( data, 0);
   packet.data = (uint8_t*)Buf;
   packet.size = Len;
