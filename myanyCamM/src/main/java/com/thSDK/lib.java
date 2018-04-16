@@ -13,7 +13,6 @@ public class lib
         try
         {
             Log.e(tag,"load lib");
-            System.loadLibrary("x264");
             System.loadLibrary("ffmpegutils");
         }
         catch (UnsatisfiedLinkError e)

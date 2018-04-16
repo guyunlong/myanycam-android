@@ -5,59 +5,10 @@ $(warning ${TARGET_ARCH_ABI})
 $(warning ${LOCAL_PATH})
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := avformat
-LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libavformat.so
-include $(PREBUILT_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := avcodec
-LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libavcodec.so
+LOCAL_MODULE := ffmpeg
+LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libffmpeg.so
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ffmpeg
 include $(PREBUILT_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := avdevice
-LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libavdevice.so
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ffmpeg
-include $(PREBUILT_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := swresample
-LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libswresample.so
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ffmpeg
-include $(PREBUILT_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := avutil
-LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libavutil.so
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ffmpeg
-include $(PREBUILT_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := swscale
-LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libswscale.so
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ffmpeg
-include $(PREBUILT_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := avfilter
-LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libavfilter.so
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ffmpeg
-include $(PREBUILT_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := postproc
-LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libpostproc.so
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ffmpeg
-include $(PREBUILT_SHARED_LIBRARY)
-
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := x264
-LOCAL_SRC_FILES :=${TARGET_ARCH_ABI}/libx264.so
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ffmpeg
-include $(PREBUILT_SHARED_LIBRARY)
-
 
 include $(CLEAR_VARS)
 SDL_PATH := ../SDL
@@ -79,7 +30,7 @@ libjpeg/jquant2.c libjpeg/jutils.c libjpeg/jmemmgr.c libjpeg/jmemansi.c
 LOCAL_CFLAGS := -D__STDC_CONSTANT_MACROS -Wno-sign-compare -Wno-switch  -DHAVE_NEON=1 \
       -mfpu=neon -mfloat-abi=softfp -fPIC -DANDROID
 LOCAL_LDLIBS := -L$(NDK_PLATFORMS_ROOT)/$(TARGET_PLATFORM)/arch-arm/usr/lib -L$(LOCAL_PATH) -llog -ljnigraphics -lz -ldl -lgcc -lGLESv1_CM -lEGL -lGLESv2  -landroid -fPIC
-LOCAL_SHARED_LIBRARIES := avformat avcodec avdevice swresample avutil swscale avfilter postproc x264
+LOCAL_SHARED_LIBRARIES := ffmpeg
 LOCAL_DISABLE_FATAL_LINKER_WARNINGS=true
 LOCAL_CFLAGS += -D GL_GLEXT_PROTOTYPES
 include $(BUILD_SHARED_LIBRARY)

@@ -337,10 +337,42 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxh
     int windowHeight;
     ANativeWindow *nativeWindow = ANativeWindow_fromSurface(env, surface);
     
-    EGLint configSpec[] = { EGL_RED_SIZE, 8,
+    
+    EGLint configSpec[] =
+    {
+        EGL_RED_SIZE, 8,
+        
         EGL_GREEN_SIZE, 8,
+        
         EGL_BLUE_SIZE, 8,
-        EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_NONE };
+        
+        EGL_ALPHA_SIZE, 8,
+        
+        EGL_BUFFER_SIZE, 16,
+        
+        EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+        
+        EGL_DEPTH_SIZE, 16,
+        
+        EGL_STENCIL_SIZE, 8,
+        
+        EGL_SAMPLE_BUFFERS, 0,
+        
+        EGL_SAMPLES, 0,
+#ifdef _IRR_COMPILE_WITH_OGLES1_
+        EGL_RENDERABLE_TYPE, EGL_OPENGL_ES_BIT,
+#else
+        EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+#endif
+        EGL_NONE, 0
+    };
+
+    
+    
+//    EGLint configSpec[] = { EGL_RED_SIZE, 8,
+//        EGL_GREEN_SIZE, 8,
+//        EGL_BLUE_SIZE, 8,
+//        EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_NONE };
     
     eglDisp = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     EGLint eglMajVers, eglMinVers;
