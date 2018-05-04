@@ -197,7 +197,10 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
  LOGE("gotPicture is %d,_video.Frame422->width is %d  _video.Frame422->height is %d,,%s(%d) \n",gotPicture,_video.Frame422->width,_video.Frame422->height, __FUNCTION__, __LINE__);
     
     pthread_mutex_lock(&th_mutex_lock);
-    glViewport(left, top, viewWidth, viewHeight);
+    //glViewport(left, top, viewWidth, viewHeight);
+    
+   // glViewport(0, 0, windowWidth, windowHeight);
+    
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, yTextureId);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, _video.Frame422->linesize[0], _video.Frame422->height,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, _video.Frame422->data[0]);
@@ -455,7 +458,7 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxh
     }
      LOGE("left is %d, top is %d ,viewWidth is %d,viewheight is %d,%s(%d) \n",left,top,viewWidth,viewHeight, __FUNCTION__, __LINE__);
     glViewport(left, top, viewWidth, viewHeight);
-    
+    //glViewport(0, 0, windowWidth, windowHeight);
     
     
     glDisableVertexAttribArray(aPositionHandle);
@@ -501,7 +504,107 @@ pthread_mutex_unlock(&th_mutex_lock);
 }
 int jopenglSurfaceChanged(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxheight){
     
+    pthread_mutex_lock(&th_mutex_lock);
     
+    eglMakeCurrent(eglDisp, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+    eglDestroyContext(eglDisp, eglCtx);
+    eglDestroySurface(eglDisp, eglWindow);
+    eglTerminate(eglDisp);
+    eglDisp = EGL_NO_DISPLAY;
+    eglWindow = EGL_NO_SURFACE;
+    eglCtx = EGL_NO_CONTEXT;
+    
+    
+    
+    
+    
+    LOGE("jopenglInit begin");
+    
+    ANativeWindow *nativeWindow = ANativeWindow_fromSurface(env, surface);
+    
+    
+    EGLint configSpec[] =
+    {
+        EGL_RED_SIZE, 8,
+        
+        EGL_GREEN_SIZE, 8,
+        
+        EGL_BLUE_SIZE, 8,
+        
+        EGL_ALPHA_SIZE, 8,
+        
+        EGL_BUFFER_SIZE, 16,
+        
+        EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+        
+        EGL_DEPTH_SIZE, 16,
+        
+        EGL_STENCIL_SIZE, 8,
+        
+        EGL_SAMPLE_BUFFERS, 0,
+        
+        EGL_SAMPLES, 0,
+#ifdef _IRR_COMPILE_WITH_OGLES1_
+        EGL_RENDERABLE_TYPE, EGL_OPENGL_ES_BIT,
+#else
+        EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+#endif
+        EGL_NONE, 0
+    };
+    
+    
+    
+    //    EGLint configSpec[] = { EGL_RED_SIZE, 8,
+    //        EGL_GREEN_SIZE, 8,
+    //        EGL_BLUE_SIZE, 8,
+    //        EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_NONE };
+    
+    eglDisp = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+    EGLint eglMajVers, eglMinVers;
+    EGLint numConfigs;
+    eglInitialize(eglDisp, &eglMajVers, &eglMinVers);
+    eglChooseConfig(eglDisp, configSpec, &eglConf, 1, &numConfigs);
+    
+    eglWindow = eglCreateWindowSurface(eglDisp, eglConf,nativeWindow, NULL);
+    
+    
+    const EGLint ctxAttr[] = {
+        EGL_CONTEXT_CLIENT_VERSION, 2,
+        EGL_NONE
+    };
+    eglCtx = eglCreateContext(eglDisp, eglConf,EGL_NO_CONTEXT, ctxAttr);
+    
+    
+    
+    eglMakeCurrent(eglDisp, eglWindow, eglWindow, eglCtx);
+    
+    
+    /**
+     * 设置opengl 要在egl初始化后进行
+     * **/
+    float *vertexData = new float[12]{
+        1.0f, -1.0f, 0.0f,
+        -1.0f, -1.0f, 0.0f,
+        1.0f, 1.0f, 0.0f,
+        -1.0f, 1.0f, 0.0f
+    };
+    
+    float *textureVertexData = new float[8]{
+        1.0f, 0.0f,//右下
+        0.0f, 0.0f,//左下
+        1.0f, 1.0f,//右上
+        0.0f, 1.0f//左上
+    };
+    ShaderUtils *shaderUtils = new ShaderUtils();
+    
+    GLuint programId = shaderUtils->createProgram(vertexShaderString,fragmentShaderString );
+    delete shaderUtils;
+    GLuint aPositionHandle = (GLuint) glGetAttribLocation(programId, "aPosition");
+    GLuint aTextureCoordHandle = (GLuint) glGetAttribLocation(programId, "aTexCoord");
+    
+    GLuint textureSamplerHandleY = (GLuint) glGetUniformLocation(programId, "yTexture");
+    GLuint textureSamplerHandleU = (GLuint) glGetUniformLocation(programId, "uTexture");
+    GLuint textureSamplerHandleV = (GLuint) glGetUniformLocation(programId, "vTexture");
     
     int windowWidth;
     int windowHeight;
@@ -512,8 +615,6 @@ int jopenglSurfaceChanged(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth
     //因为没有用矩阵所以就手动自适应
     int videoWidth = cnxwidth;
     int videoHeight = cnxheight;
-    
-    
     
     
     
@@ -530,6 +631,48 @@ int jopenglSurfaceChanged(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth
     }
     LOGE("left is %d, top is %d ,viewWidth is %d,viewheight is %d,%s(%d) \n",left,top,viewWidth,viewHeight, __FUNCTION__, __LINE__);
     glViewport(left, top, viewWidth, viewHeight);
+    //glViewport(0, 0, windowWidth, windowHeight);
+    
+    
+    glDisableVertexAttribArray(aPositionHandle);
+    glDisableVertexAttribArray(aTextureCoordHandle);
+    glUseProgram(programId);
+    glEnableVertexAttribArray(aPositionHandle);
+    glVertexAttribPointer(aPositionHandle, 3, GL_FLOAT, GL_FALSE,
+                          12, vertexData);
+    glEnableVertexAttribArray(aTextureCoordHandle);
+    glVertexAttribPointer(aTextureCoordHandle,2,GL_FLOAT,GL_FALSE,8,textureVertexData);
+    /***
+     * 初始化空的yuv纹理
+     * **/
+    
+    glGenTextures(1,&yTextureId);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D,yTextureId);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,
+                    GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glUniform1i(textureSamplerHandleY,0);
+    
+    glGenTextures(1,&uTextureId);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D,uTextureId);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,
+                    GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glUniform1i(textureSamplerHandleU,1);
+    
+    glGenTextures(1,&vTextureId);
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D,vTextureId);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,
+                    GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glUniform1i(textureSamplerHandleV,2);
+    pthread_mutex_unlock(&th_mutex_lock);
     
    
     
