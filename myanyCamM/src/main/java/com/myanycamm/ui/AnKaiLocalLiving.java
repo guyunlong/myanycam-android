@@ -307,20 +307,20 @@ public class AnKaiLocalLiving extends LivingView implements View.OnClickListener
 				SocketFunction.getInstance().manualRecord(0);
 				// VideoData.audioArraryList.clear();
 				// sf.mUdpSocket.colseSenAudioSwitch();
-				lib.jlocal_StopRec();
+				//lib.jlocal_StopRec();
 			} else {
 				SocketFunction.getInstance().manualRecord(1);
 				isRecVideoing = true;
 				videRec.setImageResource(R.drawable.play_rec_btn_on);
 				 //new CloudLivingView.RecordPlayThread().start();
 
-				try {
-					String videoPath =  FileUtils.createFile("myanycam" + SystemClock.currentThreadTimeMillis()
-                            + ".mp4",PhotoListView.mCardPath);
-					lib.jlocal_StartRec(videoPath);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+//				try {
+//					String videoPath =  FileUtils.createFile("myanycam" + SystemClock.currentThreadTimeMillis()
+//                            + ".mp4",PhotoListView.mCardPath);
+//					lib.jlocal_StartRec(videoPath);
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
 
 
 			}
@@ -400,8 +400,8 @@ public class AnKaiLocalLiving extends LivingView implements View.OnClickListener
 				.findViewById(R.id.mediacontroll);
 		mediaControllerLayout.getBackground().setAlpha(50);
 		headLayout = (LinearLayout) camView.findViewById(R.id.head_layout);
-		forceCrashBtn =  (Button) camView.findViewById(R.id.force_crash_btn);
-		forceCrashBtn.setOnClickListener(this);
+		//forceCrashBtn =  (Button) camView.findViewById(R.id.force_crash_btn);
+		//forceCrashBtn.setOnClickListener(this);
 		surfaceHolder = mSurfaceView.getHolder();
 		mActivity
 				.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -732,13 +732,13 @@ public class AnKaiLocalLiving extends LivingView implements View.OnClickListener
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()){
-			case R.id.force_crash_btn:{
-				throw new RuntimeException("This is a crash");
-			}
-			default:
-				break;
-		}
+//		switch (v.getId()){
+//			case R.id.force_crash_btn:{
+//				throw new RuntimeException("This is a crash");
+//			}
+//			default:
+//				break;
+//		}
 
 	}
 

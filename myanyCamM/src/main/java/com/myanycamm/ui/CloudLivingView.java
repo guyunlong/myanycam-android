@@ -1,16 +1,5 @@
 package com.myanycamm.ui;
 
-import gyl.cam.SoundPlay;
-import gyl.cam.recThread;
-
-import java.io.IOException;
-
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
@@ -53,6 +42,7 @@ import com.myanycam.bean.CameraListInfo;
 import com.myanycam.bean.VideoData;
 import com.myanycam.net.SocketFunction;
 import com.myanycam.net.TcpSocket;
+import com.myanycam.net.UdpSocket;
 import com.myanycamm.cam.AppServer;
 import com.myanycamm.cam.CameraCenterActivity;
 import com.myanycamm.cam.R;
@@ -61,6 +51,17 @@ import com.myanycamm.process.AdPcm;
 import com.myanycamm.utils.ELog;
 import com.myanycamm.utils.FileUtils;
 import com.myanycamm.utils.Utils;
+import com.thSDK.VideoSurfaceView;
+
+import java.io.IOException;
+
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
+
+import gyl.cam.SoundPlay;
 
 public class CloudLivingView extends LivingView {
 
@@ -78,7 +79,7 @@ public class CloudLivingView extends LivingView {
 	private static final int FADE_OUT_MEDIA = 28;
 	private static final int sDefaultTimeout = 3000;
 	private ImageButton speak, photo, sound, videRec;
-	private SurfaceView mSurfaceView;
+	private VideoSurfaceView mSurfaceView;
 	// private GlBufferView mGlBufferView;
 	private RelativeLayout mediaControllerLayout;
 	private boolean isSound = false;
@@ -179,6 +180,7 @@ public class CloudLivingView extends LivingView {
 					return;
 				}
 				//
+
 				if (isFirstVideo) {
 					sdlTAG = true;
 					mSurfaceView.setBackgroundColor(Color.TRANSPARENT);
@@ -186,9 +188,25 @@ public class CloudLivingView extends LivingView {
 					mActivity
 							.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 					mSurfaceView.setOnTouchListener(surfaceOnTouchListener);
-					showMedia(sDefaultTimeout);
+
 				}
 				isFirstVideo = false;
+
+				// ELog.i(TAG,
+				// "码流:"+SocketFunction.getInstance().mUdpSocket.rateLast );
+
+
+
+//				if (isFirstVideo) {
+//					sdlTAG = true;
+//					mSurfaceView.setBackgroundColor(Color.TRANSPARENT);
+//					playLayout.setVisibility(View.GONE);
+//					mActivity
+//							.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+//					mSurfaceView.setOnTouchListener(surfaceOnTouchListener);
+//					showMedia(sDefaultTimeout);
+//				}
+//				isFirstVideo = false;
 				if (CameraListInfo.currentCam.isUpnp()) {
 					rateTextView.setText(TcpSocket.getInstance().rateLast / 1024 + "KB/s");
 				}else{
@@ -504,8 +522,8 @@ public class CloudLivingView extends LivingView {
 				.findViewById(R.id.mediacontroll);
 		mediaControllerLayout.getBackground().setAlpha(50);
 		headLayout = (LinearLayout) camView.findViewById(R.id.head_layout);
-		mSurfaceView = (SurfaceView) camView.findViewById(R.id.paly_surf);
-
+		mSurfaceView = (VideoSurfaceView) camView.findViewById(R.id.paly_surf);
+		mSurfaceView.setHandler(mHandler);
 		// mGlBufferView = (GlBufferView)
 		// camView.findViewById(R.id.glbuffer_view);
 		surfaceHolder = mSurfaceView.getHolder();
@@ -525,14 +543,7 @@ public class CloudLivingView extends LivingView {
 
 	}
 
-	private void initSDLView() {
-		ELog.i(TAG, "初始化sdl窗口");
-		System.loadLibrary("SDL");
-		System.loadLibrary("ffmpegutils");
-		mSurface = (SDLSurface) camView.findViewById(R.id.sdl_surf);
-		testBtn = (Button) camView.findViewById(R.id.sdltest_btn);
-		testBtn.setOnClickListener(testBtnClickListener);
-	}
+
 
 	// Send a message from the SDLMain thread
 	void sendCommand(int command, Object data) {
@@ -806,9 +817,9 @@ public class CloudLivingView extends LivingView {
 		//
 		VideoData.Videolist.clear();// 清空数据
 		VideoData.audioArraryList.clear();
-		recThread dataRecThread = new recThread(mHandler);
+		//recThread dataRecThread = new recThread(mHandler);
 		//
-		dataRecThread.start();
+		//dataRecThread.start();
 		sf.mUdpSocket.setmVideoListener(mVideoListener);
 		sound.setOnClickListener(soundOnClickListener);
 		photo.setOnClickListener(photoOnClickListener);

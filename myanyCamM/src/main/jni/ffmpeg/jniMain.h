@@ -121,6 +121,7 @@ int jlocal_StartRec(JNIEnv* env, jclass obj, jstring nFilename);
 int jopengl_Resize(JNIEnv* env, jclass obj, int w, int h);
 int jopengl_Render(JNIEnv* env, jclass obj);
 int jopenglInit(JNIEnv* env, jclass obj, jobject h,jint width,jint height);
+int jopenglSurfaceChanged(JNIEnv* env, jclass obj, jobject h,jint width,jint height);
 int jlocal_SnapShot(JNIEnv* env, jclass obj, jstring nFileName);
 void video_decode_SnapShot();
 bool isIdrFrame(uint8_t* buf, int len);

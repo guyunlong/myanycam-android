@@ -26,6 +26,8 @@ static EGLSurface eglWindow;
 static EGLContext eglCtx;
 static EGLDisplay eglDisp;
 
+int left,top,viewWidth,viewHeight;
+
 
 
 #define GET_STR(x) #x
@@ -148,6 +150,7 @@ LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
 
 int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
 {
+    
     LOGE("%s(%d)\n", __FUNCTION__, __LINE__);
   AVPacket packet;
   packet.data = NULL;
@@ -193,7 +196,8 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
     
  LOGE("gotPicture is %d,_video.Frame422->width is %d  _video.Frame422->height is %d,,%s(%d) \n",gotPicture,_video.Frame422->width,_video.Frame422->height, __FUNCTION__, __LINE__);
     
-    
+    pthread_mutex_lock(&th_mutex_lock);
+    glViewport(left, top, viewWidth, viewHeight);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, yTextureId);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, _video.Frame422->linesize[0], _video.Frame422->height,0, GL_LUMINANCE, GL_UNSIGNED_BYTE, _video.Frame422->data[0]);
@@ -218,7 +222,7 @@ int jvideo_decode_frame(JNIEnv* env, jclass obj, jbyteArray data, int Len)
     
   //  av_free(&yuvFrame);
     
-   
+   pthread_mutex_unlock(&th_mutex_lock);
     
    
     
@@ -293,6 +297,7 @@ static JNINativeMethod MethodLst[] = {
   //render
   {"jopengl_Resize", "(II)I", (void*)jopengl_Resize},
   {"jopenglInit", "(Landroid/view/Surface;II)I", (void*)jopenglInit},
+  {"jopenglSurfaceChanged", "(Landroid/view/Surface;II)I", (void*)jopenglSurfaceChanged},
   {"jopengl_Render", "()I", (void*)jopengl_Render},
   {"jlocal_SnapShot", "(Ljava/lang/String;)I", (void*)jlocal_SnapShot},
     {"jlocal_StartRec", "(Ljava/lang/String;)I", (void*)jlocal_StartRec},
@@ -332,9 +337,13 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxh
     /**
      *初始化egl
      **/
+    
+    pthread_mutex_lock(&th_mutex_lock);
+    
+    
+    
     LOGE("jopenglInit begin");
-    int windowWidth;
-    int windowHeight;
+    
     ANativeWindow *nativeWindow = ANativeWindow_fromSurface(env, surface);
     
     
@@ -382,17 +391,18 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxh
     
     eglWindow = eglCreateWindowSurface(eglDisp, eglConf,nativeWindow, NULL);
     
-    eglQuerySurface(eglDisp,eglWindow,EGL_WIDTH,&windowWidth);
-    eglQuerySurface(eglDisp,eglWindow,EGL_HEIGHT,&windowHeight);
+   
     const EGLint ctxAttr[] = {
         EGL_CONTEXT_CLIENT_VERSION, 2,
         EGL_NONE
     };
     eglCtx = eglCreateContext(eglDisp, eglConf,EGL_NO_CONTEXT, ctxAttr);
     
+    
+    
     eglMakeCurrent(eglDisp, eglWindow, eglWindow, eglCtx);
     
-    LOGE("window width is %d, height is %d ,%s(%d) \n",windowWidth,windowHeight, __FUNCTION__, __LINE__);
+   
     /**
      * 设置opengl 要在egl初始化后进行
      * **/
@@ -420,17 +430,18 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxh
     GLuint textureSamplerHandleU = (GLuint) glGetUniformLocation(programId, "uTexture");
     GLuint textureSamplerHandleV = (GLuint) glGetUniformLocation(programId, "vTexture");
     
-    
+    int windowWidth;
+    int windowHeight;
+    eglQuerySurface(eglDisp,eglWindow,EGL_WIDTH,&windowWidth);
+    eglQuerySurface(eglDisp,eglWindow,EGL_HEIGHT,&windowHeight);
+    LOGE("window width is %d, height is %d ,%s(%d) \n",windowWidth,windowHeight, __FUNCTION__, __LINE__);
     
     //因为没有用矩阵所以就手动自适应
     int videoWidth = cnxwidth;
     int videoHeight = cnxheight;
-    if (cnxwidth > 1280) {
-        videoWidth = 1280;
-        videoHeight = 720;
-    }
+   
     
-    int left,top,viewWidth,viewHeight;
+    
     if(windowHeight > windowWidth){
         left = 0;
         viewWidth = windowWidth;
@@ -445,6 +456,10 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxh
      LOGE("left is %d, top is %d ,viewWidth is %d,viewheight is %d,%s(%d) \n",left,top,viewWidth,viewHeight, __FUNCTION__, __LINE__);
     glViewport(left, top, viewWidth, viewHeight);
     
+    
+    
+    glDisableVertexAttribArray(aPositionHandle);
+    glDisableVertexAttribArray(aTextureCoordHandle);
     glUseProgram(programId);
     glEnableVertexAttribArray(aPositionHandle);
     glVertexAttribPointer(aPositionHandle, 3, GL_FLOAT, GL_FALSE,
@@ -481,8 +496,43 @@ int jopenglInit(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxh
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
     glUniform1i(textureSamplerHandleV,2);
-
+pthread_mutex_unlock(&th_mutex_lock);
     return 1;
+}
+int jopenglSurfaceChanged(JNIEnv* env, jclass obj, jobject surface,jint cnxwidth,jint cnxheight){
+    
+    
+    
+    int windowWidth;
+    int windowHeight;
+    eglQuerySurface(eglDisp,eglWindow,EGL_WIDTH,&windowWidth);
+    eglQuerySurface(eglDisp,eglWindow,EGL_HEIGHT,&windowHeight);
+    LOGE("window width is %d, height is %d ,%s(%d) \n",windowWidth,windowHeight, __FUNCTION__, __LINE__);
+    
+    //因为没有用矩阵所以就手动自适应
+    int videoWidth = cnxwidth;
+    int videoHeight = cnxheight;
+    
+    
+    
+    
+    
+    if(windowHeight > windowWidth){
+        left = 0;
+        viewWidth = windowWidth;
+        viewHeight = (int)(videoHeight*1.0f/videoWidth*viewWidth);
+        top = (windowHeight - viewHeight)/2;
+    }else{
+        top = 0;
+        viewHeight = windowHeight;
+        viewWidth = (int)(videoWidth*1.0f/videoHeight*viewHeight);
+        left = (windowWidth - viewWidth)/2;
+    }
+    LOGE("left is %d, top is %d ,viewWidth is %d,viewheight is %d,%s(%d) \n",left,top,viewWidth,viewHeight, __FUNCTION__, __LINE__);
+    glViewport(left, top, viewWidth, viewHeight);
+    
+   
+    
 }
 int jopengl_Resize(JNIEnv* env, jclass obj, int w, int h)
 {

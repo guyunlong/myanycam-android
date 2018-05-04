@@ -23,6 +23,8 @@ import static com.thSDK.lib.tag;
 public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callback,Runnable {
     public SurfaceHolder surfaceHolder;
     private Handler mHandler;
+    boolean startDecodeThread = false;
+    boolean changeSurface = false;
 //    String H264Path; //264写测试文件路径
 //    DataOutputStream out;
 //    static  int frameCnt = 0;
@@ -63,14 +65,24 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        new Thread(this).start();
+        changeSurface = true;
+        if (!startDecodeThread){
+            new Thread(this).start();
+        }
+
     }
     public void run() {
 
         Log.e(tag,"surface run");
+
         AppServer.isDisplayVideo = true;
         while (AppServer.isDisplayVideo)
         {
+
+            if(changeSurface && startDecodeThread){
+                changeSurface = false;
+                lib.jopenglSurfaceChanged(VideoSurfaceView.this.surfaceHolder.getSurface(),width,height);
+            }
             if (null == VideoData.Videolist || VideoData.Videolist.size() == 0) {
                 //
                 if (VideoData.audioArraryList.isEmpty()) {
@@ -91,13 +103,13 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
                     }
                     if (videoData != null){
                         long parseTimeBefore = System.currentTimeMillis();
-                        ELog.i(TAG, "解码---------0" );
+                       // ELog.i(TAG, "解码---------0" );
 
 
                         parse(videoData,videoData.length);
                         long parseTimeAfter = System.currentTimeMillis();
                         int parseTime = (int) (parseTimeAfter - parseTimeBefore);
-                        ELog.i(TAG, "解码显示时间："+parseTime);
+                      //  ELog.i(TAG, "解码显示时间："+parseTime);
 
                     }
 
@@ -176,9 +188,15 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
                 height = 180;
             }
             ELog.i(TAG, "width:" + width + "height:" + height);
+            startDecodeThread = true;
+            changeSurface = false;
             lib.jopenglInit(VideoSurfaceView.this.surfaceHolder.getSurface(),width,height);
             jvideo_decode_init(type, width, height);
         }
+
+
+
+
 
         byte[] bmp = new byte[total - 7];
         for (int i = 0; i < total - 7; i++) {
@@ -186,7 +204,7 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         }
         //ByteBuffer subbuf = ByteBuffer.wrap(buf,7,total-7);
         long parseTimeBefore = System.currentTimeMillis();
-        ELog.i(TAG, "解码---------0" );
+        //ELog.i(TAG, "解码---------0" );
 //        try {
 //            if (frameCnt++ < 1000 && out!= null){
 //                out.write(bmp,0,total - 7);
@@ -200,7 +218,7 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //            e.printStackTrace();
 //        }
         int n = jvideo_decode_frame( bmp, total - 7);
-        ELog.e(TAG, "解码n:" + n+"thead id is "+Thread.currentThread().getId());
+        //ELog.e(TAG, "解码n:" + n+"thead id is "+Thread.currentThread().getId());
         if (n>0){
             mHandler.sendMessage(Message.obtain(mHandler, 21, null));
         }

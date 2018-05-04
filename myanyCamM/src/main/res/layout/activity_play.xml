@@ -132,14 +132,14 @@
             android:clickable="true"
             android:src="@drawable/big_playmiddle" />
 
-        <Button
-            android:id="@+id/force_crash_btn"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Force Crash!"
-            android:layout_below="@id/play_btn"
-            android:layout_marginTop="60dp"
-            android:layout_centerHorizontal="true" />
+        <!--<Button-->
+            <!--android:id="@+id/force_crash_btn"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:text="Force Crash!"-->
+            <!--android:layout_below="@id/play_btn"-->
+            <!--android:layout_marginTop="60dp"-->
+            <!--android:layout_centerHorizontal="true" />-->
 
     </RelativeLayout>
 

@@ -664,14 +664,21 @@ public class UdpSocket {
 			case 0:
 				ELog.i(TAG, "收到视频,packid is "+packageId);
 
+				synchronized(VideoData.Videolist){
+					videoSize = videoWithCmd[6];
+					Vdata video = new Vdata();
+					video.setVideoData(videoWithCmd);
+					VideoData.Videolist.add(video);
+				}
+
 				// VideoData.videoTreeMap.put(Integer.toString(iTimeStamp),
 				// videoWithCmd);
 //				videoSize = videoWithCmd[6];
 //				v.setVideoData(videoWithCmd);
 //				VideoData.Videolist.add(v);
 
-				parse(v.getVideoData(),v.getVideoData().length);
-				vMap.remove(packageId);
+//				parse(v.getVideoData(),v.getVideoData().length);
+//				vMap.remove(packageId);
 				//
 				break;
 			case 1:

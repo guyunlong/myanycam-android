@@ -30,6 +30,7 @@ public class lib
     public static native int jopengl_Render();
     public static native int jopenglInit(Surface surface,int width,int height);
     public static native int jvideo_decode_init(int type,int width,int height);
+    public static native int jopenglSurfaceChanged(Surface surface,int width,int height);
     public static native int jvideo_decode_frame(byte[]buf,int size);
 
 
