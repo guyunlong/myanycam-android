@@ -52,6 +52,7 @@ import com.myanycamm.utils.ELog;
 import com.myanycamm.utils.FileUtils;
 import com.myanycamm.utils.Utils;
 import com.thSDK.VideoSurfaceView;
+import com.thSDK.lib;
 
 import java.io.IOException;
 
@@ -366,12 +367,20 @@ public class CloudLivingView extends LivingView {
 			}
 
 			try {
-				FileUtils.saveFile(bitmap,
-						"myanycam" + SystemClock.currentThreadTimeMillis()
-								+ ".png", PhotoListView.mCardPath);
+//				FileUtils.saveFile(bitmap,
+//						"myanycam" + SystemClock.currentThreadTimeMillis()
+//								+ ".png", PhotoListView.mCardPath);
+				String capturePath =  FileUtils.createFile("myanycam" + SystemClock.currentThreadTimeMillis()
+						+ ".png",PhotoListView.mCardPath);
+				Log.e("ankailocalliving",capturePath);
+				if (capturePath.length()>0){
+					lib.jlocal_SnapShot(capturePath);
+				}
+
 				Toast.makeText(mActivity,
 						mActivity.getString(R.string.save_success),
 						Toast.LENGTH_SHORT).show();
+
 			} catch (IOException e) {
 				ELog.i(TAG, "保存失败>.." + e.getMessage());
 				Toast.makeText(mActivity,
@@ -379,7 +388,6 @@ public class CloudLivingView extends LivingView {
 						Toast.LENGTH_SHORT).show();
 				e.printStackTrace();
 			}
-			// sf.getMcuSocket().modifyCam();
 		}
 	};
 
