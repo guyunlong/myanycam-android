@@ -1,7 +1,5 @@
 package com.myanycamm.cam;
 
-import java.util.HashMap;
-
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -10,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -41,9 +38,9 @@ import com.myanycamm.ui.SettingView;
 import com.myanycamm.update.UpdateSoft;
 import com.myanycamm.utils.Configure;
 import com.myanycamm.utils.ELog;
-import com.myanycamm.utils.Utils;
 import com.myanycamm.zxing.client.android.CaptureActivity;
-import com.nmbb.oplayer.ui.player.VideoActivity;
+
+import java.util.HashMap;
 
 public class LoginActivity extends BaseActivity {
 
@@ -232,6 +229,7 @@ public class LoginActivity extends BaseActivity {
 
 		rememberUser(_name, _psw);
 		showRequestDialog(getString(R.string.dialog_verify_cou));
+		sf = (SocketFunction) getApplicationContext();
 		sf.login(0);
 	}
 
