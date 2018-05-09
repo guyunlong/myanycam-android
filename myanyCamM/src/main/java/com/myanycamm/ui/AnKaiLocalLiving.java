@@ -104,8 +104,9 @@ public class AnKaiLocalLiving extends LivingView implements View.OnClickListener
 			switch (msg.what) {
 
 			case SET_Img:
-				bitmap = (Bitmap) msg.obj;
+//				bitmap = (Bitmap) msg.obj;
 				if (!AppServer.isDisplayVideo) {
+					Log.e("localliving","========!AppServer.isDisplayVideo");
 					return;
 				}
 				//
@@ -118,6 +119,7 @@ public class AnKaiLocalLiving extends LivingView implements View.OnClickListener
 					mSurfaceView.setOnTouchListener(surfaceOnTouchListener);
 
 				}
+
 				isFirstVideo = false;
 
 				// ELog.i(TAG,

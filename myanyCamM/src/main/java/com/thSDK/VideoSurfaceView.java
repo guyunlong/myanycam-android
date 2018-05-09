@@ -53,7 +53,7 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
-
+        Log.e(tag,"surface destoryed");
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
@@ -76,7 +76,7 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         Log.e(tag,"surface run");
 
         AppServer.isDisplayVideo = true;
-        while (AppServer.isDisplayVideo)
+        while (true)
         {
 
             if(changeSurface && startDecodeThread){
@@ -125,6 +125,7 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
             }
 
         }
+        //startDecodeThread = false;
 
     }
 
@@ -218,7 +219,7 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //            e.printStackTrace();
 //        }
         int n = jvideo_decode_frame( bmp, total - 7);
-        //ELog.e(TAG, "解码n:" + n+"thead id is "+Thread.currentThread().getId());
+        ELog.e(TAG, "解码n:" + n+"thead id is "+Thread.currentThread().getId());
         if (n>0){
             mHandler.sendMessage(Message.obtain(mHandler, 21, null));
         }

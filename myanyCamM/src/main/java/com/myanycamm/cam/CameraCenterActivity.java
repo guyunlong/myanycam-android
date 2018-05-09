@@ -416,6 +416,7 @@ public class CameraCenterActivity extends BaseActivity {
 				if (tabId.equals("cam")) {
 					ELog.i(TAG, "到了摄像头列表");
 					mCameraListView.setHead();
+					AppServer.isDisplayVideo = true;
 				}
 				if (tabId.equals("event")) {
 					mCameraListView.stopCam();
