@@ -27,10 +27,10 @@ import com.myanycamm.ui.DialogFactory;
 import com.myanycamm.update.UpdateSoft;
 import com.myanycamm.utils.Constants;
 import com.myanycamm.utils.ELog;
-import com.myanycamm.zxing.client.android.CaptureActivity;
+
+import java.io.IOException;
 
 import io.fabric.sdk.android.Fabric;
-import java.io.IOException;
 
 public class WelcomeActivity extends BaseActivity {
 	private static String TAG = "WelcomeActivity";
@@ -59,8 +59,8 @@ public class WelcomeActivity extends BaseActivity {
 			case NOUSER:
 				ELog.i(TAG, "没有得到保存的用户");
 				Intent intentHome = new Intent(WelcomeActivity.this,
-						CaptureActivity.class);
-				intentHome.putExtra("login", true);
+						LoginActivity.class);
+//				intentHome.putExtra("login", true);
 //				Intent intentHome = new Intent(WelcomeActivity.this,
 //						LoginActivity.class);
 				startActivityForResult(intentHome, 0);
